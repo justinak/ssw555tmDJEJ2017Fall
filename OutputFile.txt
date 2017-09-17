@@ -1,0 +1,232 @@
+ 
+0 NOTE the lines until the next note are all correct
+Level:  0
+Tag:  NOTE  |Valid
+ 
+0 HEAD
+Level:  0
+Tag:  HEAD  |Valid
+ 
+0 jc INDI
+Level:  0
+Tag:  INDI  |Valid
+ 
+0 NAME Jimmy /Connors/
+Level:  0
+Tag: NOT SUPPORTED
+ 
+1 SEX M
+Level:  1
+Tag:  SEX  |Valid
+ 
+1 BIRT
+Level:  1
+Tag:  BIRT  |Valid
+ 
+2 DATE 1 JAN 1950
+Level:  2
+Tag:  DATE  |Valid
+ 
+1 DEAT
+Level:  1
+Tag:  DEAT  |Valid
+ 
+2 DATE 31 DEC 2099
+Level:  2
+Tag:  DATE  |Valid
+ 
+1 FAMC f1
+Level:  1
+Tag:  FAMC  |Valid
+ 
+1 FAMS f2
+Level:  1
+Tag:  FAMS  |Valid
+ 
+0 f2 FAM
+Level:  0
+Tag:  FAM  |Valid
+ 
+1 HUSB jc
+Level:  1
+Tag:  HUSB  |Valid
+ 
+1 WIFE ce
+Level:  1
+Tag:  WIFE  |Valid
+ 
+1 CHIL aa
+Level:  1
+Tag:  CHIL  |Valid
+ 
+1 MARR
+Level:  1
+Tag:  MARR  |Valid
+ 
+2 DATE 1 JUN 1960
+Level:  2
+Tag:  DATE  |Valid
+ 
+1 DIV
+Level:  1
+Tag:  DIV  |Valid
+ 
+2 DATE 1 JUN 1961
+Level:  2
+Tag:  DATE  |Valid
+ 
+0 TRLR
+Level:  0
+Tag:  TRLR  |Valid
+ 
+0 NOTE Everything past this line is invalid
+Level:  0
+Tag:  NOTE  |Valid
+ 
+0 INDI id
+Level:  0
+Tag:  INDI  |Valid
+ 
+0 FAM id
+Level:  0
+Tag:  FAM  |Valid
+ 
+0 NAME invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+0 SEX invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+0 BIRT invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+0 DEAT invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+0 FAMC invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+0 FAMS invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+0 MARR invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+0 HUSB invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+0 WIFE invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+0 CHIL invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+0 DIV invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+0 DATE invalid
+Level:  0
+Tag: NOT SUPPORTED
+ 
+1 INDI invalid
+Level:  1
+Tag: NOT SUPPORTED
+ 
+1 FAM invalid
+Level:  1
+Tag: NOT SUPPORTED
+ 
+1 HEAD
+Level:  1
+Tag: NOT SUPPORTED
+ 
+1 TRLR
+Level:  1
+Tag: NOT SUPPORTED
+ 
+1 DATE
+Level:  1
+Tag: NOT SUPPORTED
+ 
+1 NOTE bad note
+Level:  1
+Tag: NOT SUPPORTED
+ 
+1 DATE 1 JUN 2017
+Level:  1
+Tag: NOT SUPPORTED
+ 
+2 INDI id
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 FAM id
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 NAME invalid
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 SEX invalid
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 BIRT invalid
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 DEAT invalid
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 FAMC invalid
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 FAMS invalid
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 MARR invalid
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 HUSB invalid
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 WIFE invalid
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 CHIL invalid
+Level:  2
+Tag: NOT SUPPORTED
+ 
+2 DIV invalid
+Level:  2
+Tag: NOT SUPPORTED
+ 
+1 INVALID invalid
+Level:  1
+Tag: NOT SUPPORTED
+ 
+3 INVALID invalid
+Level:  3
+Tag: NOT SUPPORTED
+ 
+4 NOTE invalid
+Level:  4
+Tag: NOT SUPPORTED
