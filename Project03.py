@@ -16,9 +16,9 @@ class Lineage:
 
     def read_gedcom(self, gedcom_file):
         try:
-            fp = open(gedcom_file, 'r')
+            gedcom_file = open("C:\Users\jkope\Documents\Stevens-Software Engineering Masters\SSW 555 - Agile Methods for Software Development\Fall 2017\Week 3 - Scrum\DJEJ_family.ged", 'r')
         except FileNotFoundError:
-            print("File", gedcom_file, "cannot be read" )
+            print("File cannot be read" )
             return(None)
         else:
             with gedcom_file:  
@@ -28,9 +28,9 @@ class Lineage:
                     self.individuals[ID] = Individual()
                     self.families[ID] = Family(famID, married, divorced, husbandID, husband_name, wifeID, wife_name, children)
                     
-                    if DJEJ_Fam[0] == '0' and DJEJ_Fam[2] == 'FAM':
-                        # append line
-                        
+                    for token in DJEJ_Fam:
+                        if token[2] == 'FAM':
+                            token.append(
         
     def convert_date(self):
         # trying to find if there is a module for converting the date or a function from:
@@ -48,7 +48,7 @@ class Lineage:
         """ Create a table displaying information about families in the lineage """
         families_table = PrettyTable(['ID', 'Married', 'Divorced', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name', 'Children'])
         for family in self.families.values():
-            families_table.add_row([families.ID, families.married, families.divorced, families.husbandID, families.husband_name, families.wifeID, families.wife_name, families.children])
+            families_table.add_row([families.famID, families.married, families.divorced, families.husbandID, families.husband_name, families.wifeID, families.wife_name, families.children])
         print(families_table)
                   
                   
@@ -65,20 +65,20 @@ class Family: # initialize family class
                    
 def main():
     DJEJ_lineage = Lineage()
-    DJEJ_lineage.read_gedcom(#add location of gedcom) 
+    DJEJ_lineage.read_gedcom(gedcom_file) 
     DJEJ_lineage.convert_date()
     DJEJ_lineage.individuals_summary()
     DJEJ_lineage.families_summary()
 
 
 class LineageTest(unittest.TestCase):
-    
+
     def read_gedcom(self, gedcom_file):
-        """ when this function is complete in the Lineage class copy it down here"""
+""" when this function is complete in the Lineage class copy it down here"""
         try:
-            fp = open(gedcom_file, 'r')
+            gedcom_file = open("C:\Users\jkope\Documents\Stevens-Software Engineering Masters\SSW 555 - Agile Methods for Software Development\Fall 2017\Week 3 - Scrum\DJEJ_family.ged", 'r')
         except FileNotFoundError:
-            print("File", gedcom_file, "cannot be read" )
+            print("File cannot be read" )
             return(None)
         else:
             with gedcom_file:  
@@ -87,9 +87,6 @@ class LineageTest(unittest.TestCase):
                     # update line under with Devanshu's identification for Individual class
                     self.individuals[ID] = Individual()
                     self.families[ID] = Family(famID, married, divorced, husbandID, husband_name, wifeID, wife_name, children)
-                    
-                    if DJEJ_Fam[0] == '0' and DJEJ_Fam[2] == 'FAM':
-                        # append line
 
     def test_individuals_summary(self):
         """ Test Individual summary table """
