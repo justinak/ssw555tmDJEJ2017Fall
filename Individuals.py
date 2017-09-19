@@ -25,14 +25,8 @@ def individuals():
                 elif list_indi[1] == 'FAMS':
                     list_parentof = list_indi[2]
                     print("Parent in : ",list_parentof)
-
-                else:
-                    print()
-
-                if list_indi[1] == 'BIRT':
-                    line = next(i, line)
-                    if list_indi[1] == 'DATE':
-                        print(list_indi[2]," ",list_indi[3]," ",list_indi[4])
+                elif list_indi[1] == 'DATE':
+                    print(list_indi[2]," ",list_indi[3]," ",list_indi[4])
 
             except IndexError:
                 print()
