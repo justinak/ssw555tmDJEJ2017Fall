@@ -22,34 +22,34 @@ class GedLine(object):
         self.arg = None
         self.ref = None
 
-        listLine = line.split(' ',)
+        list_Line = line.split(' ',)
         # set level of the object
-        self.level = int(listLine[0])
+        self.level = int(list_Line[0])
 
         # for setting tag and argument
         if self.level > 0:
-            self.tag = listLine[1]
-            self.arg = listLine[2:]
+            self.tag = list_Line[1]
+            self.arg = list_Line[2:]
 
         if self.level == 0:
-            if listLine[1] in validTags:
-                self.tag = listLine[1]
+            if list_Line[1] in validTags:
+                self.tag = list_Line[1]
                 self.arg = None
             else:
-                self.tag = listLine[2]
-                self.ref = listLine[1]
+                self.tag = list_Line[2]
+                self.ref = list_Line[1]
 
 
 # class for individual persons
 class Individuals(object):
 
-    def __init__(self, uid):
-        self.uid = uid  #umoque id of individual person
+    def __init__(self, IndId):
+        self.IndId = IndId  #umoque id of individual person
         self.name = None # name of individual person
         self.birthday = None # Date of birthday of individual person
         self.age = None # Age of indvidual person
         self.gender = None # gender of individual person
-        self.death = None # Date of death of individual person
+        self.death_date = None # Date of death of individual person
         self.alive = True # person alive or dead
         self.famc = [] # family id where individual is a child
         self.fams = [] # family id where individual is parent
@@ -57,25 +57,25 @@ class Individuals(object):
 # class for families
 class Family(object):
 
-    def __init__(self, uid):
-        self.uid = uid
+    def __init__(self, famId):
+        self.famId = famId
         self.marriage = None  # marriage event for family
-        self.husband = None  # for husband in family
-        self.husbandName = None # name of husband
-        self.wife = None  # for wife in family
-        self.wifeName = None # for name of the wife
+        self.husbandId = None  # for husband in family
+        self.husband_Name = None # name of husband
+        self.wifeId = None  # for wife in family
+        self.wife_Name = None # for name of the wife
         self.children = []  # for child in family
-        self.divorce = None  # divorce event in family
+        self.divorced = None  # divorce event in family
 
 
 # Function to Parse the GEDCOM file
-def GEDCOM_Reader(filename):
+def GEDCOM_Reader(gedcom_file):
     individual = []
     family = []
     gedcom_list = []
 
     # read each line from file and strip \n from the last
-    lines = [line.rstrip('\n\r') for line in open(filename)]
+    lines = [line.rstrip('\n\r') for line in open(gedcom_file)]
 
     # Create objects and add it to the list
     for line in lines:
@@ -118,7 +118,7 @@ def GEDCOM_Reader(filename):
                         )
                         date_of = None
                     elif date_of == 'DEAT':
-                        indi_person.death = date(
+                        indi_person.death_date = date(
                             int(gedcom_line.arg[2]),
                             datetime.strptime(gedcom_line.arg[1], '%b').month,
                             int(gedcom_line.arg[0])
@@ -146,15 +146,15 @@ def GEDCOM_Reader(filename):
                 if gedcom_line.tag == "DIV":
                     date_of = "DIV"
                 if gedcom_line.tag == "HUSB":
-                    fam_obj.husband = gedcom_line.arg[0]
+                    fam_obj.husbandId = gedcom_line.arg[0]
                     for person in individual:
-                        if person.uid == gedcom_line.arg[0]:
-                            fam_obj.husbandName = person.name
+                        if person.IndId == gedcom_line.arg[0]:
+                            fam_obj.husband_Name = person.name
                 if gedcom_line.tag == "WIFE":
-                    fam_obj.wife = gedcom_line.arg[0]
+                    fam_obj.wifeId = gedcom_line.arg[0]
                     for person in individual:
-                        if person.uid == gedcom_line.arg[0]:
-                            fam_obj.wifeName = person.name
+                        if person.IndId == gedcom_line.arg[0]:
+                            fam_obj.wife_Name = person.name
                 if gedcom_line.tag == "CHIL":
                     fam_obj.children.append(gedcom_line.arg[0])
 
@@ -170,7 +170,7 @@ def GEDCOM_Reader(filename):
 
                     elif date_of == "DIV":
 
-                        fam_obj.divorce = date(
+                        fam_obj.divorced = date(
                             int(gedcom_line.arg[2]),
                             datetime.strptime(gedcom_line.arg[1], '%b').month,
                             int(gedcom_line.arg[0]))
@@ -184,7 +184,7 @@ def GEDCOM_Reader(filename):
 
 #default file path
 
-FILENAME = 'C:/Devanshu/Python Project/DJEJ_family.ged'
+gedcom_file = 'C:/Devanshu/Python Project/DJEJ_family.ged'
 
 indi = PrettyTable()
 fam = PrettyTable()
@@ -192,7 +192,7 @@ fam = PrettyTable()
 # main function for taking the file path
 def main():
 
-    individual, families = GEDCOM_Reader(FILENAME)
+    individual, families = GEDCOM_Reader(gedcom_file)
 
     #printing values
     Summary_tables(individual, families)
