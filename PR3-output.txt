@@ -1,3 +1,8 @@
+Error msgs
+
+('US03', 'Birth should occur before death.', ['@I6@'])
+('US03', 'Birth should occur before death.', ['@I7@'])
+('US02', 'Wife is born after marriage.', ['@I3@'])
 
 INDIVIDUAL TABLE
 
@@ -9,8 +14,8 @@ INDIVIDUAL TABLE
 |  @I3@ |  ['Helena', '/Mazurek/']   | 1968-12-23 | None |   F    |    None    |  True |  ['@F2@'] |     ['@F1@']     |
 |  @I4@ |   ['Evelyn', '/Kopec/']    | 1998-02-05 | None |   F    |    None    |  True |  ['@F1@'] |        []        |
 |  @I5@ |   ['Daniel', '/Kopec/']    | 1992-09-19 | None |   M    |    None    |  True |  ['@F1@'] |        []        |
-|  @I6@ |    ['Jan', '/Mazurek/']    | 1933-09-04 | None |   M    | 2009-01-14 | False |     []    |     ['@F2@']     |
-|  @I7@ |    ['Irene', '/Surma/']    | 1933-08-31 | None |   F    | 2008-05-08 | False |     []    |     ['@F2@']     |
+|  @I6@ |    ['Jan', '/Mazurek/']    | 1933-09-04 | None |   M    | 1932-01-14 | False |     []    |     ['@F2@']     |
+|  @I7@ |    ['Irene', '/Surma/']    | 1933-08-31 | None |   F    | 1932-05-08 | False |     []    |     ['@F2@']     |
 |  @I8@ |   ['Irene', '/Mazurek/']   | 1965-07-09 | None |   F    |    None    |  True |  ['@F2@'] | ['@F3@', '@F4@'] |
 |  @I9@ |   ['Mikey', '/McSpicy/']   | 1965-01-02 | None |   M    | 2010-07-10 | False |     []    |     ['@F4@']     |
 | @I10@ |   ['Mary', '/McSpicy/']    | 2000-06-01 | None |   F    |    None    |  True |  ['@F4@'] |        []        |
@@ -53,7 +58,7 @@ FAMILY TABLE
 +-------+------------+---------+--------------------------+-------+---------------------------+------------------------------------------------------+---------+
 |  Fid  |  Married   | Husband |       Husband Name       |  Wife |         Wife Name         |                       Children                       | Divorce |
 +-------+------------+---------+--------------------------+-------+---------------------------+------------------------------------------------------+---------+
-|  @F1@ | 1991-05-11 |   @I2@  |   ['Adam', '/Kopec/']    |  @I3@ |  ['Helena', '/Mazurek/']  |               ['@I1@', '@I4@', '@I5@']               |   None  |
+|  @F1@ | 1965-05-11 |   @I2@  |   ['Adam', '/Kopec/']    |  @I3@ |  ['Helena', '/Mazurek/']  |               ['@I1@', '@I4@', '@I5@']               |   None  |
 |  @F2@ | 1955-05-11 |   @I6@  |   ['Jan', '/Mazurek/']   |  @I7@ |    ['Irene', '/Surma/']   | ['@I3@', '@I8@', '@I13@', '@I17@', '@I28@', '@I32@'] |   None  |
 |  @F3@ | 2005-07-07 |  @I11@  | ['Mariusz', '/McLovin/'] |  @I8@ |   ['Irene', '/Mazurek/']  |                      ['@I12@']                       |   None  |
 |  @F4@ | 1994-08-03 |   @I9@  |  ['Mikey', '/McSpicy/']  |  @I8@ |   ['Irene', '/Mazurek/']  |                      ['@I10@']                       |   None  |
