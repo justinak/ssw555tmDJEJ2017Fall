@@ -3,6 +3,8 @@ import sys
 from prettytable import PrettyTable
 from User_Stories_Justina import GEDCOM_Reader, marriage_age, less_than_150yrs
 from User_stories import GEDCOM_Reader, birth_before_death, birth_before_marriage
+from userStory16 import male_last_names
+from userStory1 import dates_before_dates
 
 import unittest
 from GIF_classes import GedLine, Individuals, Family
@@ -28,6 +30,8 @@ def main():
     less_than_150yrs(individual)
     birth_before_death(individual)
     birth_before_marriage(individual,families)
+    male_last_names(individual,families)
+    dates_before_dates(individual,families)
 
     #printing values
     Summary_tables(individual, families)
