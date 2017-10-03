@@ -6,6 +6,8 @@ from User_stories import GEDCOM_Reader, birth_before_death, birth_before_marriag
 from userStory16 import male_last_names
 from userStory1 import dates_before_dates
 from UserStories import GEDCOM_Reader, checkIncest, check_genderrole
+
+
 import unittest
 from GIF_classes import GedLine, Individuals, Family
 
@@ -34,6 +36,7 @@ def main():
     male_last_names(individual,families)
     checkIncest(families)
     check_genderrole(individual, families)
+
 
     #printing values
     Summary_tables(individual, families)
