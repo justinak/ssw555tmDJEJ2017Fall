@@ -4,11 +4,12 @@ import sys
 
 from prettytable import PrettyTable
 from User_stories import GEDCOM_Reader, birth_before_death, birth_before_marriage
+from userStory16 import male_last_names
 
 
 #default file path
 
-gedcom_file = 'C:/Devanshu/Python Project/DJEJ_family.ged'
+gedcom_file = 'DJEJ_family.ged'
 
 indi = PrettyTable()
 fam = PrettyTable()
@@ -21,9 +22,10 @@ def main():
     print()
     birth_before_death(individual)
     birth_before_marriage(individual,families)
+    male_last_names(individual, families)
 
     #printing values
-    Summary_tables(individual, families)
+    #Summary_tables(individual, families)
 
 # function for printing the list of individuals and families to
 def Summary_tables(individual, families):
@@ -52,6 +54,6 @@ def Summary_tables(individual, families):
 
 
 if __name__ == '__main__':
-    sys.stdout = open("PR3-output.txt","w")
+ #   sys.stdout = open("PR3-output.txt","w")
     main()
     sys.__stdout__.close()

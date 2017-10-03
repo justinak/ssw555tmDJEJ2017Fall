@@ -1,4 +1,4 @@
-Error msgs
+ERROR MESSAGES
 
 ('US03', 'Birth should occur before death.', ['@I6@'])
 ('US03', 'Birth should occur before death.', ['@I7@'])

@@ -1,6 +1,6 @@
+
 validTags = ['NAME', 'SEX', 'FAMS', ' FAMC', 'MARR', 'BIRT', 'WIFE', 'HUSB', 'CHIL', 'DEAT', 'DIV', 'DATE', 'HEAD','TRLR', 'NOTE',
              'INDI', 'FAM']
-
 
 # class for every gedcom tag line
 class GedLine(object):
