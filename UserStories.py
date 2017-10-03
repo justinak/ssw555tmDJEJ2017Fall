@@ -148,12 +148,12 @@ def GEDCOM_Reader(gedcom_file):
                     fam_obj.husbandId = gedcom_line.arg[0]
                     for person in individual:
                         if person.IndId == gedcom_line.arg[0]:
-                            fam_obj.husband_Name = person.IndId
+                            fam_obj.husband_Name = person.name
                 if gedcom_line.tag == "WIFE":
                     fam_obj.wifeId = gedcom_line.arg[0]
                     for person in individual:
                         if person.IndId == gedcom_line.arg[0]:
-                            fam_obj.wife_Name = person.IndId
+                            fam_obj.wife_Name = person.name
                 if gedcom_line.tag == "CHIL":
                     fam_obj.children.append(gedcom_line.arg[0])
 
