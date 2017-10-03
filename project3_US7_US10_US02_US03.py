@@ -3,7 +3,9 @@ import sys
 from prettytable import PrettyTable
 from User_Stories_Justina import GEDCOM_Reader, marriage_age, less_than_150yrs
 from User_stories import GEDCOM_Reader, birth_before_death, birth_before_marriage
-
+from userStory16 import male_last_names
+from userStory1 import dates_before_dates
+from UserStories import GEDCOM_Reader, checkIncest, check_genderrole
 import unittest
 from GIF_classes import GedLine, Individuals, Family
 
@@ -13,7 +15,7 @@ from datetime import datetime
 
 #default file path
 
-gedcom_file = ''
+gedcom_file = 'GedcomFamilyJS.ged'
 
 indi = PrettyTable()
 fam = PrettyTable()
@@ -24,10 +26,14 @@ def main():
     individual, families = GEDCOM_Reader(gedcom_file)
     print("ERROR MESSAGES")
     print()
-    marriage_age(individual, families)  
+    marriage_age(individual, families)
     less_than_150yrs(individual)
     birth_before_death(individual)
     birth_before_marriage(individual,families)
+    dates_before_dates(individual,families)
+    male_last_names(individual,families)
+    checkIncest(families)
+    check_genderrole(individual, families)
 
     #printing values
     Summary_tables(individual, families)

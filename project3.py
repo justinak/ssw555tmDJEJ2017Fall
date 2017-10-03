@@ -3,13 +3,15 @@
 import sys
 
 from prettytable import PrettyTable
+from User_Stories_Justina import GEDCOM_Reader, marriage_age, less_than_150yrs
 from User_stories import GEDCOM_Reader, birth_before_death, birth_before_marriage
 from userStory16 import male_last_names
-
+from userStory1 import dates_before_dates
+#from UserStories import GEDCOM_Reader, checkIncest, check_genderrole
 
 #default file path
 
-gedcom_file = 'DJEJ_family.ged'
+gedcom_file = 'GedcomFamilyJS.ged'
 
 indi = PrettyTable()
 fam = PrettyTable()
@@ -23,6 +25,9 @@ def main():
     birth_before_death(individual)
     birth_before_marriage(individual,families)
     male_last_names(individual, families)
+    dates_before_dates(individual,families)
+   # checkIncest(families)
+   # check_genderrole(individual,families)
 
     #printing values
     #Summary_tables(individual, families)
@@ -54,6 +59,6 @@ def Summary_tables(individual, families):
 
 
 if __name__ == '__main__':
- #   sys.stdout = open("PR3-output.txt","w")
+    sys.stdout = open("PR3-output.txt","w")
     main()
     sys.__stdout__.close()

@@ -8,7 +8,7 @@ from datetime import datetime
 
 error_locations = []
 
-gedcom_file = 'C:/Devanshu/Python Project/DJEJ_family.ged'
+gedcom_file = 'GedcomFamilyJS.ged'
 #US03 - Birth should occur before death of an individual
 
 
@@ -144,20 +144,19 @@ def birth_before_marriage(individuals, families):
                     husbandId = indis
                 if indis.IndId == fam.wifeId:
                     wifeId = indis
-
             if wifeId.birthday > fam.marriage:
                 # Found a case spouse marries before birthday
                 error_msg = "Wife is born after marriage."
                 location = [wifeId.IndId]
                 error = (Story_name, error_msg, location)
-                print(error)
+                print('ERROR: FAMILY: US10', location, ':Wife is born after marriage')
                 US02_flag = False
 
             if husbandId.birthday > fam.marriage:
                 error_msg = "Husband is born after marriage."
                 location = [husbandId.IndId]
                 error = (Story_name, error_msg, location)
-                print(error)
+                print('ERROR: FAMILY: US10:', location, ':Husband is born after marriage')
                 US02_flag = False
 
         return US02_flag
@@ -178,7 +177,7 @@ def birth_before_death(individuals):
                 error_msg = "Birth should occur before death."
                 location = [indis.IndId] # gives ID location where the error occurs
                 error = (Story_name,error_msg,location)
-                print(error)
+                print('ERROR: INDIVIDUAL: US03', location, ':Birth should occur before death')
 
                 US03_flag = False
     return US03_flag

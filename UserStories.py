@@ -148,12 +148,12 @@ def GEDCOM_Reader(gedcom_file):
                     fam_obj.husbandId = gedcom_line.arg[0]
                     for person in individual:
                         if person.IndId == gedcom_line.arg[0]:
-                            fam_obj.husband_Name = person.IndId
+                            fam_obj.husband_Name = person.name
                 if gedcom_line.tag == "WIFE":
                     fam_obj.wifeId = gedcom_line.arg[0]
                     for person in individual:
                         if person.IndId == gedcom_line.arg[0]:
-                            fam_obj.wife_Name = person.IndId
+                            fam_obj.wife_Name = person.name
                 if gedcom_line.tag == "CHIL":
                     fam_obj.children.append(gedcom_line.arg[0])
 
@@ -179,18 +179,18 @@ def GEDCOM_Reader(gedcom_file):
 
     return individual, family
 
-gedcom_file = 'Jhustin1.ged'
+gedcom_file = 'GedcomFamilyJS.ged'
 
 # main function for taking the file path
 def main():
 
     individual, families = GEDCOM_Reader(gedcom_file)
 
-    checkIncest(families)
+    print(checkIncest(families))
 
     print(check_genderrole(individual, families))
 
-#user story was to make sure that siblings could not marry each other
+#user story 18, was to make sure that siblings could not marry each other
 def checkIncest(families):
     for family in families:
         for child1 in family.children:
@@ -199,15 +199,16 @@ def checkIncest(families):
                     if child1 == child2:
                         pass
                     elif(child1 == marriage.wife_Name or child1 == marriage.husband_Name) and (child2 == marriage.wife_Name or child2 == marriage.husband_Name):
-                        return "Siblings cannot marry"
+                        print('ERROR: FAMILY: US18: Siblings cannot marry each other')
 
+#user story 21, correct gender roles
 def check_genderrole(individuals,families):
     for family in families:
         for individual in individuals:
             if (individual.IndId == family.husbandId and individual.gender != "M"):
-                return "Gender role of " + " ".join(individual.name) + " does not match"
+                print("ERROR: INDIVIDUAL: US21: Gender role of [" + " ".join(individual.name) + "] does not match")
             elif (individual.IndId == family.wifeId and individual.gender != "F"):
-                return "Gender role of " + " ".join(individual.name) + " does not match"
+                print("ERROR: INDIVIDUAL: US21: Gender role of [" + " ".join(individual.name) + "] does not match")
             
                             
 class Test_checkIncest(unittest.TestCase):

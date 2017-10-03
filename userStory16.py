@@ -8,4 +8,4 @@ def male_last_names(inds, fams):
                     for fam in fams:
                         if fam.famId == famc:
                             if not ind.name[1] == fam.husband_Name[1]:
-                                print("('US16', 'Sons' last names should match father's', " + ind.IndId + ")")
+                                print('ERROR: FAMILY : US16: [' + ind.IndId + '] :Sons last names should match fathers ')
