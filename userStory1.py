@@ -59,7 +59,6 @@ def dates_before_dates(individuals, family):
     fam_bad_marr = []
     fam_bad_div = []
     for ind_obj in individuals:
-        print(ind_obj.birthday)
         if (ind_obj.birthday != None):
             if ind_obj.birthday > current_date:
                 print('Error: ' + ind_obj.IndId + ' Birthday before current date')
@@ -74,10 +73,10 @@ def dates_before_dates(individuals, family):
             if fam_obj.marriage > current_date:
                 print('Error: ' + fam_obj.famId + ' Marriage date before current date')
                 fam_bad_marr += [fam_obj.famId]
-        if fam_obj.divorce_date != None:
-            if (fam_obj.divorce_date != None):
-                if fam_obj.divorce_date > current_date:
-                    print('Error: ' + fam_obj.famId + ' Divorce date before current date')
-                    fam_bad_div += [fam_obj.famId]
+        #if fam_obj.divorce_date != None:
+            #if (fam_obj.divorce_date != None):
+                #if fam_obj.divorce_date > current_date:
+                    #print('Error: ' + fam_obj.famId + ' Divorce date before current date')
+                    #fam_bad_div += [fam_obj.famId]
     return [ind_bad_bday, ind_bad_death, fam_bad_marr, fam_bad_div]
 
