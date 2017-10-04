@@ -3,10 +3,8 @@ import sys
 from prettytable import PrettyTable
 from User_Stories_Justina import GEDCOM_Reader, marriage_age, less_than_150yrs
 from User_stories import GEDCOM_Reader, birth_before_death, birth_before_marriage
-from userStory16 import male_last_names
-from userStory1 import dates_before_dates
 from UserStories import GEDCOM_Reader, checkIncest, check_genderrole
-
+from User_Stories_Erin import GEDCOM_Reader, male_last_names, dates_before_dates
 
 import unittest
 from GIF_classes import GedLine, Individuals, Family

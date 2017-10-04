@@ -16,8 +16,8 @@ def GEDCOM_Reader(gedcom_file):
     gedcom_list = []
 
     # read each line from file and strip \n from the last
-    File = open(gedcom_file)
-    lines = [line.rstrip('\n\r') for line in File]
+    with open(gedcom_file) as f:
+        lines = [line.rstrip('\n\r') for line in f]
 
     # Create objects and add it to the list
     for line in lines:
@@ -41,8 +41,10 @@ def GEDCOM_Reader(gedcom_file):
                     indi_person.name = gedcom_line.arg
                 if gedcom_line.tag == "SEX":
                     indi_person.gender = gedcom_line.arg[0]
-                #if gedcom_line.tag == "BIRT":
-                    #date_of = "BIRT"
+                if gedcom_line.tag == "BIRT":
+                    date_of = "BIRT"
+                    #if gedcom_line.tag == "BIRT":
+                    #   indi_person.age.append(gedcom_line.arg[0])
                 if gedcom_line.tag == "DEAT":
                     date_of = "DEAT"
                 if gedcom_line.tag == "FAMC":
@@ -122,8 +124,11 @@ def GEDCOM_Reader(gedcom_file):
                         date_of = None
             # append object into the family list
             family.append(fam_obj)
-    File.close()
+
     return individual, family
+
+
+#user story 1, dates before dates
 #user story 1, dates before dates
 def dates_before_dates(individuals, family):
     current_date = date.today()
@@ -132,27 +137,27 @@ def dates_before_dates(individuals, family):
     fam_bad_marr = []
     fam_bad_div = []
     for ind_obj in individuals:
-        print(ind_obj.birthday)
         if (ind_obj.birthday != None):
             if ind_obj.birthday > current_date:
-                print('Error: ' + ind_obj.IndId + ' Birthday before current date')
+
+                print('ERROR: INDIVIDUAL: US01: [' + ind_obj.IndId + '] :Birthday before current date')
                 ind_bad_bday += [ind_obj.IndId]
         if (ind_obj.death_date != None):
             if ind_obj.death_date > current_date:
-                print('Error: ' + ind_obj.IndId + ' Deathday before current date')
+                print('ERROR: INDIVIDUAL: US01: [' + ind_obj.IndId + '] :Deathday before current date')
                 ind_bad_death += [ind_obj.IndId]
 
     for fam_obj in family:
         if fam_obj.marriage != None:
             if fam_obj.marriage > current_date:
-                print('Error: ' + fam_obj.famId + ' Marriage date before current date')
+                print('ERROR: FAMILY: US01: [' + fam_obj.famId + '] :Marriage date before current date')
                 fam_bad_marr += [fam_obj.famId]
-        if fam_obj.divorce_date != None:
-            if (fam_obj.divorce_date != None):
-                if fam_obj.divorce_date > current_date:
-                    print('Error: ' + fam_obj.famId + ' Divorce date before current date')
-                    fam_bad_div += [fam_obj.famId]
+                #if fam_obj.divorce_date != None:
+                #if (fam_obj.divorce_date != None):
+                #if fam_obj.divorce_date > current_date:
+                #print('Error: ' + fam_obj.famId + ' Divorce date before current date')
     return [ind_bad_bday, ind_bad_death, fam_bad_marr, fam_bad_div]
+
 
 #User story 16, male last names
 
@@ -164,4 +169,4 @@ def male_last_names(inds, fams):
                     for fam in fams:
                         if fam.famId == famc:
                             if not ind.name[1] == fam.husband_Name[1]:
-                                print("('US16', 'Sons' last names should match father's', " + ind.IndId + ")")
+                                print('ERROR: FAMILY : US16: [' + ind.IndId + '] :Sons last names should match fathers ')
