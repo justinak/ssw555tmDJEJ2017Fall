@@ -149,14 +149,14 @@ def birth_before_marriage(individuals, families):
                 error_msg = "Wife is born after marriage."
                 location = [wifeId.IndId]
                 error = (Story_name, error_msg, location)
-                print('ERROR: FAMILY: US10', location, ':Wife is born after marriage')
+                print('ERROR: FAMILY: ',Story_name,' : ', location, ':Wife is born after marriage')
                 US02_flag = False
 
             if husbandId.birthday > fam.marriage:
                 error_msg = "Husband is born after marriage."
                 location = [husbandId.IndId]
                 error = (Story_name, error_msg, location)
-                print('ERROR: FAMILY: US10:', location, ':Husband is born after marriage')
+                print('ERROR: FAMILY:  ',Story_name,' : ', location, ':Husband is born after marriage')
                 US02_flag = False
 
         return US02_flag
