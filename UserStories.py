@@ -198,7 +198,7 @@ def checkIncest(families):
                 for marriage in families:
                     if child1 == child2:
                         pass
-                    elif(child1 == marriage.wife_Name or child1 == marriage.husband_Name) and (child2 == marriage.wife_Name or child2 == marriage.husband_Name):
+                    elif(child1 == marriage.wifeId or child1 == marriage.husbandId) and (child2 == marriage.wifeId or child2 == marriage.husbandId):
                         print('ERROR: FAMILY: US18: Siblings cannot marry each other')
 
 #user story 21, correct gender roles

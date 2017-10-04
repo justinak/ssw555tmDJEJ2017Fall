@@ -11,6 +11,8 @@ ERROR: INDIVIDUAL: US03 ['@I4@'] :Birth should occur before death
 ERROR: FAMILY: US10: ['@I1@'] :Husband is born after marriage
 ERROR: INDIVIDUAL: US01: [@I1@] :Birthday before current date
 ERROR: FAMILY : US16: [@I1@] :Sons last names should match fathers 
+ERROR: FAMILY: US18: Siblings cannot marry each other
+ERROR: FAMILY: US18: Siblings cannot marry each other
 ERROR: INDIVIDUAL: US21: Gender role of [Brian /Scarlett/] does not match
 
 INDIVIDUAL TABLE
