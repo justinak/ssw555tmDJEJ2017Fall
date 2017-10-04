@@ -1,15 +1,67 @@
-import unittest
-from GIF_classes import GedLine, Individuals, Family
-
 from datetime import date
 from datetime import datetime
+import os
+
+import sys
+import unittest
+
+validTags = ['NAME', 'SEX', 'FAMS', ' FAMC', 'MARR', 'BIRT', 'WIFE', 'HUSB', 'CHIL', 'DEAT', 'DIV', 'DATE', 'HEAD','TRLR', 'NOTE',
+             'INDI', 'FAM']
+
+# class for every gedcom tag line
+class GedLine(object):
+
+    def __init__(self, line):
+        self.level = None
+        self.tag = None
+        self.arg = None
+        self.ref = None
+
+        list_Line = line.split(' ',)
+        # set level of the object
+        self.level = int(list_Line[0])
+
+        # for setting tag and argument
+        if self.level > 0:
+            self.tag = list_Line[1]
+            self.arg = list_Line[2:]
+
+        if self.level == 0:
+            if list_Line[1] in validTags:
+                self.tag = list_Line[1]
+                self.arg = None
+            else:
+                self.tag = list_Line[2]
+                self.ref = list_Line[1]
 
 
+# class for individual persons
+class Individuals(object):
 
-gedcom_file = 'GedcomFamilyJS.ged'
+    def __init__(self, IndId):
+        self.IndId = IndId  #umoque id of individual person
+        self.name = None # name of individual person
+        self.birthday = None # Date of birthday of individual person
+        self.age = None # Age of indvidual person
+        self.gender = None # gender of individual person
+        self.death_date = None # Date of death of individual person
+        self.alive = True # person alive or dead
+        self.famc = [] # family id where individual is a child
+        self.fams = [] # family id where individual is parent
 
+# class for families
+class Family(object):
 
-# Function to Parse the GEDCOM file
+    def __init__(self, famId):
+        self.famId = famId
+        self.marriage = None  # marriage event for family
+        self.husbandId = None  # for husband in family
+        self.husband_Name = None # name of husband
+        self.wifeId = None  # for wife in family
+        self.wife_Name = None # for name of the wife
+        self.children = []  # for child in family
+        self.divorced = None  # divorce event in family
+
 def GEDCOM_Reader(gedcom_file):
     individual = []
     family = []
@@ -43,8 +95,8 @@ def GEDCOM_Reader(gedcom_file):
                     indi_person.gender = gedcom_line.arg[0]
                 if gedcom_line.tag == "BIRT":
                     date_of = "BIRT"
-                    #if gedcom_line.tag == "BIRT":
-                    #   indi_person.age.append(gedcom_line.arg[0])
+                #if gedcom_line.tag == "BIRT":
+                 #   indi_person.age.append(gedcom_line.arg[0])
                 if gedcom_line.tag == "DEAT":
                     date_of = "DEAT"
                 if gedcom_line.tag == "FAMC":
@@ -127,45 +179,58 @@ def GEDCOM_Reader(gedcom_file):
 
     return individual, family
 
+gedcom_file = 'GedcomFamilyJS.ged'
 
-#user story 1, dates before dates
-def dates_before_dates(individuals, family):
-    current_date = date.today()
-    ind_bad_bday = []
-    ind_bad_death = []
-    fam_bad_marr = []
-    fam_bad_div = []
-    for ind_obj in individuals:
-        if (ind_obj.birthday != None):
-            if ind_obj.birthday > current_date:
+# main function for taking the file path
+def main():
 
-                print('ERROR: INDIVIDUAL: US01: [' + ind_obj.IndId + '] :Birthday before current date')
-                ind_bad_bday += [ind_obj.IndId]
-        if (ind_obj.death_date != None):
-            if ind_obj.death_date > current_date:
-                print('ERROR: INDIVIDUAL: US01: [' + ind_obj.IndId + '] :Deathday before current date')
-                ind_bad_death += [ind_obj.IndId]
+    individual, families = GEDCOM_Reader(gedcom_file)
 
-    for fam_obj in family:
-        if fam_obj.marriage != None:
-            if fam_obj.marriage > current_date:
-                print('ERROR: FAMILY: US01: [' + fam_obj.famId + '] :Marriage date before current date')
-                fam_bad_marr += [fam_obj.famId]
-                #if fam_obj.divorce_date != None:
-                #if (fam_obj.divorce_date != None):
-                #if fam_obj.divorce_date > current_date:
-                #print('Error: ' + fam_obj.famId + ' Divorce date before current date')
-    return [ind_bad_bday, ind_bad_death, fam_bad_marr, fam_bad_div]
+    print(checkIncest(families))
 
+    print(check_genderrole(individual, families))
 
-#User story 16, male last names
+#user story 18, was to make sure that siblings could not marry each other
+def checkIncest(families):
+    for family in families:
+        for child1 in family.children:
+            for child2 in family.children:
+                for marriage in families:
+                    if child1 == child2:
+                        pass
+                    elif(child1 == marriage.wifeId or child1 == marriage.husbandId) and (child2 == marriage.wifeId or child2 == marriage.husbandId):
+                        print('ERROR: FAMILY: US18: Siblings cannot marry each other')
 
-def male_last_names(inds, fams):
-    for ind in inds:
-        if ind.gender == "M":
-            if len(ind.famc) > 0:
-                for famc in ind.famc:
-                    for fam in fams:
-                        if fam.famId == famc:
-                            if not ind.name[1] == fam.husband_Name[1]:
-                                print('ERROR: FAMILY : US16: [' + ind.IndId + '] :Sons last names should match fathers ')
+#user story 21, correct gender roles
+def check_genderrole(individuals,families):
+    for family in families:
+        for individual in individuals:
+            if (individual.IndId == family.husbandId and individual.gender != "M"):
+                print("ERROR: INDIVIDUAL: US21: Gender role of [" + " ".join(individual.name) + "] does not match")
+            elif (individual.IndId == family.wifeId and individual.gender != "F"):
+                print("ERROR: INDIVIDUAL: US21: Gender role of [" + " ".join(individual.name) + "] does not match")
+            
+                            
+class Test_checkIncest(unittest.TestCase):
+    #Two different people with the same name, one is a sibling the other is not and the other one is married to one of the siblings 
+    def test_1(self):
+        self.assertEqual(checkIncest(GEDCOM_Reader('testcase1.ged')[1]),None,'Should be fine')
+    #Normal family
+    def test_2(self):
+        self.assertEqual(checkIncest(GEDCOM_Reader('testcase2.ged')[1]),None,'Should be fine')
+    #One sibling married another sibling
+    def test_3(self):
+        self.assertEqual(checkIncest(GEDCOM_Reader('testcase3.ged')[1]),'Siblings cannot marry','This is incest')
+    #Same sex sibling marriage within family   
+    def test_4(self):
+        self.assertEqual(checkIncest(GEDCOM_Reader('testcase4.ged')[1]),'Siblings cannot marry','This is incest')
+    #Multiple sibling marriage within family    
+    def test_5(self):
+        self.assertEqual(checkIncest(GEDCOM_Reader('testcase5.ged')[1]),'Siblings cannot marry','This is incest')
+  
+    
+if __name__ == '__main__':
+    sys.stdout = open("PR3-output.txt","w")
+    main()
+    #unittest.main(verbosity=5)
+    sys.stdout.close()

@@ -6,7 +6,11 @@ from datetime import datetime
 
 
 
+error_locations = []
+
 gedcom_file = 'GedcomFamilyJS.ged'
+#US03 - Birth should occur before death of an individual
+
 
 
 # Function to Parse the GEDCOM file
@@ -16,8 +20,8 @@ def GEDCOM_Reader(gedcom_file):
     gedcom_list = []
 
     # read each line from file and strip \n from the last
-    with open(gedcom_file) as f:
-        lines = [line.rstrip('\n\r') for line in f]
+    File = open(gedcom_file)
+    lines = [line.rstrip('\n\r') for line in File]
 
     # Create objects and add it to the list
     for line in lines:
@@ -43,8 +47,6 @@ def GEDCOM_Reader(gedcom_file):
                     indi_person.gender = gedcom_line.arg[0]
                 if gedcom_line.tag == "BIRT":
                     date_of = "BIRT"
-                    #if gedcom_line.tag == "BIRT":
-                    #   indi_person.age.append(gedcom_line.arg[0])
                 if gedcom_line.tag == "DEAT":
                     date_of = "DEAT"
                 if gedcom_line.tag == "FAMC":
@@ -60,9 +62,6 @@ def GEDCOM_Reader(gedcom_file):
                             datetime.strptime(gedcom_line.arg[1], '%b').month,
                             int(gedcom_line.arg[0])
                         )
-                        today = date.today()
-                        birthdate = indi_person.birthday.year
-                        indi_person.age = today.year - birthdate
                         date_of = None
                     elif date_of == 'DEAT':
                         indi_person.death_date = date(
@@ -124,48 +123,97 @@ def GEDCOM_Reader(gedcom_file):
                         date_of = None
             # append object into the family list
             family.append(fam_obj)
-
+    File.close()
     return individual, family
 
 
-#user story 1, dates before dates
-def dates_before_dates(individuals, family):
-    current_date = date.today()
-    ind_bad_bday = []
-    ind_bad_death = []
-    fam_bad_marr = []
-    fam_bad_div = []
-    for ind_obj in individuals:
-        if (ind_obj.birthday != None):
-            if ind_obj.birthday > current_date:
+# User Story 2
+# Birth before Marriage
 
-                print('ERROR: INDIVIDUAL: US01: [' + ind_obj.IndId + '] :Birthday before current date')
-                ind_bad_bday += [ind_obj.IndId]
-        if (ind_obj.death_date != None):
-            if ind_obj.death_date > current_date:
-                print('ERROR: INDIVIDUAL: US01: [' + ind_obj.IndId + '] :Deathday before current date')
-                ind_bad_death += [ind_obj.IndId]
+def birth_before_marriage(individuals, families):
 
-    for fam_obj in family:
-        if fam_obj.marriage != None:
-            if fam_obj.marriage > current_date:
-                print('ERROR: FAMILY: US01: [' + fam_obj.famId + '] :Marriage date before current date')
-                fam_bad_marr += [fam_obj.famId]
-                #if fam_obj.divorce_date != None:
-                #if (fam_obj.divorce_date != None):
-                #if fam_obj.divorce_date > current_date:
-                #print('Error: ' + fam_obj.famId + ' Divorce date before current date')
-    return [ind_bad_bday, ind_bad_death, fam_bad_marr, fam_bad_div]
+    US02_flag = True
+    Story_name = "US02"
+    for fam in families:
+        if fam.marriage:
+            husbandId = None
+            wifeId = None
+
+            for indis in individuals:
+                if indis.IndId == fam.husbandId:
+                    husbandId = indis
+                if indis.IndId == fam.wifeId:
+                    wifeId = indis
+            if wifeId.birthday > fam.marriage:
+                # Found a case spouse marries before birthday
+                error_msg = "Wife is born after marriage."
+                location = [wifeId.IndId]
+                error = (Story_name, error_msg, location)
+                print('ERROR: FAMILY:',Story_name,' : ', location, ':Wife is born after marriage')
+
+                US02_flag = False
+
+            if husbandId.birthday > fam.marriage:
+                error_msg = "Husband is born after marriage."
+                location = [husbandId.IndId]
+                error = (Story_name, error_msg, location)
+                print('ERROR: FAMILY:',Story_name,' : ', location, ':Husband is born after marriage')
+
+                US02_flag = False
+
+        return US02_flag
+
+# User Story 3
+# Birth should occur before death of the individual member
 
 
-#User story 16, male last names
+def birth_before_death(individuals):
 
-def male_last_names(inds, fams):
-    for ind in inds:
-        if ind.gender == "M":
-            if len(ind.famc) > 0:
-                for famc in ind.famc:
-                    for fam in fams:
-                        if fam.famId == famc:
-                            if not ind.name[1] == fam.husband_Name[1]:
-                                print('ERROR: FAMILY : US16: [' + ind.IndId + '] :Sons last names should match fathers ')
+    US03_flag = True
+    Story_name = "US03"
+    for indis in individuals: # getting the values of object of individual class from original file project3
+        if indis.death_date and indis.birthday:
+            if indis.death_date < indis.birthday: # If line "if indis.death_date and indis.birthday:" is not written
+                                                  #  then the "<" is not allowed to execute between an instance of
+                                                  # none type and an instance of datetime.date.
+                error_msg = "Birth should occur before death."
+                location = [indis.IndId] # gives ID location where the error occurs
+                error = (Story_name,error_msg,location)
+                print('ERROR: INDIVIDUAL: US03', location, ':Birth should occur before death')
+
+                US03_flag = False
+    return US03_flag
+
+class TestUserStories(unittest.TestCase):
+
+    def test_us03_01(self):
+        indis, _ = GEDCOM_Reader(gedcom_file)
+        self.assertNotEqual(birth_before_death(indis), False)
+        print("Test case 1 passed")
+
+
+    def test_us03_02(self):
+        indis, _ = GEDCOM_Reader(gedcom_file)
+        self.assertEqual(birth_before_death(indis), True)
+        print("Test case 2 passed")
+
+    def test_us03_03(self):
+        indis, _ = GEDCOM_Reader(gedcom_file)
+        self.assertTrue(birth_before_death(indis))
+        print("Test case 3 passed")
+
+    def test_us03_04(self):
+        indis, _ = GEDCOM_Reader(gedcom_file)
+        self.assertIs(birth_before_death(indis ),True)
+        print("Test case 4 passed")
+
+    def test_us03_05(self):
+        indis, _ = GEDCOM_Reader(gedcom_file)
+        self.assertIsNotNone(birth_before_death(indis))
+        print("Test case 5 passed")
+
+if __name__ == '__main__':
+    unittest.main(exit=False, verbosity=3)
+    birth_before_death()
+
+

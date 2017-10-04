@@ -2,8 +2,8 @@ import sys
 
 from prettytable import PrettyTable
 from User_Stories_Justina import GEDCOM_Reader, marriage_age, less_than_150yrs
-from User_stories import GEDCOM_Reader, birth_before_death, birth_before_marriage
-from UserStories import GEDCOM_Reader, checkIncest, check_genderrole
+from User_stories_Devanshu import GEDCOM_Reader, birth_before_death, birth_before_marriage
+from User_Stories_Jhustin import GEDCOM_Reader, checkIncest, check_genderrole
 from User_Stories_Erin import GEDCOM_Reader, male_last_names, dates_before_dates
 
 import unittest
