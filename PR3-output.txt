@@ -1,46 +1,75 @@
 ERROR MESSAGES
 
-ERROR: FAMILY: US10: ['@I1@'] :Marriage before age 14
-ERROR: FAMILY: US10: ['@I11@'] :Marriage before age 14
-ERROR: FAMILY: US10: ['@I4@'] :Marriage before age 14
-ERROR: FAMILY: US10: ['@I5@'] :Marriage before age 14
-ERROR: FAMILY: US10: ['@I6@'] :Marriage before age 14
-ERROR: FAMILY: US10: ['@I5@'] :Marriage before age 14
-ERROR: FAMILY: US07: ['@I2@'] :Age should be less than 150
-ERROR: INDIVIDUAL: US03 ['@I4@'] :Birth should occur before death
-ERROR: FAMILY: US02  :  ['@I1@'] :Husband is born after marriage
-ERROR: INDIVIDUAL: US01: [@I1@] :Birthday before current date
-ERROR: FAMILY : US16: [@I1@] :Sons last names should match fathers 
-ERROR: FAMILY: US18: Siblings cannot marry each other
-ERROR: FAMILY: US18: Siblings cannot marry each other
-ERROR: INDIVIDUAL: US21: Gender role of [Brian /Scarlett/] does not match
+('US02', 'Wife is born after marriage.', ['@I3@'])
+('US03', 'Birth should occur before death.', ['@I6@'])
+('US08', 'Child born before marriage of parents', ['@I5@'])
+('US22', 'ID already exists', ['@I22@'])
 
 INDIVIDUAL TABLE
 
-+-------+----------------------------+------------+------+--------+------------+-------+----------+------------------+
-|   id  |            Name            |  Birthday  | Age  | Gender |   Death    | Alive |  Child   |      Spouse      |
-+-------+----------------------------+------------+------+--------+------------+-------+----------+------------------+
-|  @I1@ | ['Jhustin', '/Scarlettt/'] | 2995-08-11 | -978 |   M    |    None    |  True | ['@F2@'] |     ['@F1@']     |
-|  @I2@ |  ['Brian', '/Scarlett/']   | 1863-12-09 | 154  |   F    |    None    |  True |    []    |     ['@F2@']     |
-|  @I3@ |   ['Natalie', '/Moore/']   | 1970-08-14 |  47  |   F    |    None    |  True | ['@F3@'] |     ['@F2@']     |
-|  @I4@ |  ['Franklin', '/Moore/']   | 1986-02-09 |  31  |   M    | 1976-04-13 | False |    []    |     ['@F3@']     |
-|  @I5@ |  ['Jenita', '/Drummond/']  | 1951-04-15 |  66  |   F    |    None    |  True |    []    | ['@F3@', '@F4@'] |
-|  @I6@ |   ['Lennox', '/Nelson/']   | 1947-06-11 |  70  |   M    |    None    |  True |    []    |     ['@F4@']     |
-|  @I7@ |  ['Chadwick', '/Nelson/']  | 1983-10-12 |  34  |   M    |    None    |  True | ['@F4@'] |        []        |
-|  @I8@ |   ['Dillon', '/Nelson/']   | 1980-11-16 |  37  |   M    |    None    |  True | ['@F4@'] |        []        |
-|  @I9@ | ['Brendon', '/Scarlett/']  | 1998-12-24 |  19  |   M    |    None    |  True | ['@F2@'] |        []        |
-| @I10@ | ['Antoinette', '/Moore/']  | 1972-06-03 |  45  |   F    |    None    |  True | ['@F3@'] |        []        |
-| @I11@ |   ['Mary', '/Scarlett/']   | 2000-01-05 |  17  |   F    |    None    |  True | ['@F2@'] |     ['@F1@']     |
-+-------+----------------------------+------------+------+--------+------------+-------+----------+------------------+
++-------+----------------------------+------------+-----+--------+------------+-------+-----------+------------------+
+|   id  |            Name            |  Birthday  | Age | Gender |   Death    | Alive |   Child   |      Spouse      |
++-------+----------------------------+------------+-----+--------+------------+-------+-----------+------------------+
+|  @I1@ |   ['Justina', '/Kopec/']   | 1991-06-28 |  26 |   F    |    None    |  True |  ['@F1@'] |        []        |
+|  @I2@ |    ['Adam', '/Kopec/']     | 1964-03-21 |  53 |   M    |    None    |  True |     []    |     ['@F1@']     |
+|  @I3@ |  ['Helena', '/Mazurek/']   | 1968-12-23 |  49 |   F    |    None    |  True |  ['@F2@'] |     ['@F1@']     |
+|  @I4@ |   ['Evelyn', '/Kopec/']    | 1998-02-05 |  19 |   F    |    None    |  True |  ['@F1@'] |        []        |
+|  @I5@ |   ['Daniel', '/Kopec/']    | 1962-09-19 |  55 |   M    |    None    |  True |  ['@F1@'] |        []        |
+|  @I6@ |    ['Jan', '/Mazurek/']    | 1935-09-04 |  82 |   M    | 1934-01-14 | False |     []    |     ['@F2@']     |
+|  @I7@ |    ['Irene', '/Surma/']    | 1933-08-31 |  84 |   F    | 1938-05-08 | False |     []    |     ['@F2@']     |
+|  @I8@ |   ['Irene', '/Mazurek/']   | 1965-07-09 |  52 |   F    |    None    |  True |  ['@F2@'] | ['@F3@', '@F4@'] |
+|  @I9@ |   ['Mikey', '/McSpicy/']   | 1965-01-02 |  52 |   M    | 2010-07-10 | False |     []    |     ['@F4@']     |
+| @I10@ |   ['Mary', '/McSpicy/']    | 2000-06-01 |  17 |   F    |    None    |  True |  ['@F4@'] |        []        |
+| @I11@ |  ['Mariusz', '/McLovin/']  | 1965-04-02 |  52 |   M    |    None    |  True |     []    |     ['@F3@']     |
+| @I12@ |   ['Mill', '/McLovin/']    | 2012-10-02 |  5  |   M    |    None    |  True |  ['@F3@'] |        []        |
+| @I13@ |  ['Teresa', '/Mazurek/']   | 1968-12-06 |  49 |   F    |    None    |  True |  ['@F2@'] |     ['@F5@']     |
+| @I14@ |  ['Zbigniew', '/Sudol/']   | 1966-01-04 |  51 |   M    |    None    |  True |     []    |     ['@F5@']     |
+| @I15@ |   ['Kristie', '/Sudol/']   | 1994-11-08 |  23 |   F    |    None    |  True |  ['@F5@'] |        []        |
+| @I16@ |   ['Claudia', '/Sudol/']   | 1998-05-05 |  19 |   F    |    None    |  True |  ['@F5@'] |        []        |
+| @I17@ |   ['Mary', '/Mazurek/']    | 1955-10-06 |  62 |   F    |    None    |  True |  ['@F2@'] |     ['@F6@']     |
+| @I18@ |  ['Wladyslaw', '/Krok/']   | 1950-01-02 |  67 |   M    |    None    |  True |     []    |     ['@F6@']     |
+| @I19@ |  ['Aleksandra', '/Krok/']  | 1983-08-04 |  34 |   F    |    None    |  True |  ['@F6@'] |     ['@F7@']     |
+| @I20@ |   ['Rysiek', '/Osika/']    | 1980-02-02 |  37 |   M    |    None    |  True |     []    |     ['@F7@']     |
+| @I21@ |  ['Przemyslaw', '/Krok/']  | 1981-02-10 |  36 |   M    |    None    |  True |  ['@F6@'] |        []        |
+| @I22@ |    ['Sabina', '/Krok/']    | 1985-05-02 |  32 |   F    |    None    |  True |  ['@F6@'] |     ['@F8@']     |
+| @I22@ |  ['Robert', '/Niesika/']   | 1985-02-05 |  32 |   M    |    None    |  True |     []    |     ['@F8@']     |
+| @I24@ |   ['Andrzej', '/Krok/']    | 1987-08-20 |  30 |   M    |    None    |  True |  ['@F6@'] |     ['@F9@']     |
+| @I25@ |  ['Ewelina', '/Kiszka/']   | 1987-04-04 |  30 |   F    |    None    |  True |     []    |     ['@F9@']     |
+| @I26@ |    ['Zaneta', '/Krok/']    | 2000-04-07 |  17 |   M    |    None    |  True |  ['@F9@'] |        []        |
+| @I27@ |    ['Jakub', '/Krok/']     | 2015-04-07 |  2  |   M    |    None    |  True |  ['@F9@'] |        []        |
+| @I28@ |    ['Jan', '/Mazurek/']    | 1961-05-13 |  56 |   M    |    None    |  True |  ['@F2@'] |    ['@F10@']     |
+| @I29@ |    ['Jola', '/Labuda/']    | 1968-03-12 |  49 |   F    |    None    |  True |     []    |    ['@F10@']     |
+| @I30@ |  ['Michael', '/Mazurek/']  | 1993-05-19 |  24 |   M    |    None    |  True | ['@F10@'] |        []        |
+| @I31@ |  ['Matthew', '/Mazurek/']  | 1995-05-24 |  22 |   M    |    None    |  True | ['@F10@'] |        []        |
+| @I32@ |   ['Frank', '/Mazurek/']   | 1959-05-05 |  58 |   M    |    None    |  True |  ['@F2@'] |    ['@F11@']     |
+| @I33@ | ['Maria', '/Pietraszek/']  | 1960-03-31 |  57 |   F    |    None    |  True |     []    |    ['@F11@']     |
+| @I34@ |   ['Peter', '/Mazurek/']   | 1991-05-10 |  26 |   M    |    None    |  True | ['@F11@'] |        []        |
+| @I35@ |  ['Joanna', '/Mazurek/']   | 1983-11-01 |  34 |   F    |    None    |  True | ['@F11@'] |    ['@F12@']     |
+| @I36@ |  ['Pawel', '/Jablecki/']   | 1981-04-04 |  36 |   M    |    None    |  True |     []    |    ['@F12@']     |
+| @I37@ | ['Angelica', '/Jablecki/'] | 2003-04-04 |  14 |   F    |    None    |  True | ['@F12@'] |        []        |
+| @I38@ |   ['Paul', '/Mazurek/']    | 1981-08-28 |  36 |   M    |    None    |  True | ['@F11@'] |    ['@F13@']     |
+| @I39@ |   ['Diane', '/Mulawka/']   | 1981-04-04 |  36 |   F    |    None    |  True |     []    |    ['@F13@']     |
+| @I40@ |   ['Lucas', '/Mazurek/']   | 2011-05-04 |  6  |   M    |    None    |  True | ['@F13@'] |        []        |
+| @I41@ |  ['Andrew', '/Mazurek/']   | 2015-03-04 |  2  |   M    |    None    |  True | ['@F13@'] |        []        |
++-------+----------------------------+------------+-----+--------+------------+-------+-----------+------------------+
 
 
 FAMILY TABLE
 
-+------+------------+---------+----------------------------+-------+--------------------------+---------------------------+------------+
-| Fid  |  Married   | Husband |        Husband Name        |  Wife |        Wife Name         |          Children         |  Divorce   |
-+------+------------+---------+----------------------------+-------+--------------------------+---------------------------+------------+
-| @F1@ | 2009-06-09 |   @I1@  | ['Jhustin', '/Scarlettt/'] | @I11@ |  ['Mary', '/Scarlett/']  |             []            |    None    |
-| @F2@ | 2009-06-09 |   @I2@  |  ['Brian', '/Scarlett/']   |  @I3@ |  ['Natalie', '/Moore/']  | ['@I1@', '@I9@', '@I11@'] |    None    |
-| @F3@ | 1942-03-08 |   @I4@  |  ['Franklin', '/Moore/']   |  @I5@ | ['Jenita', '/Drummond/'] |     ['@I3@', '@I10@']     | 1975-06-14 |
-| @F4@ | 1922-06-09 |   @I6@  |   ['Lennox', '/Nelson/']   |  @I5@ | ['Jenita', '/Drummond/'] |      ['@I7@', '@I8@']     |    None    |
-+------+------------+---------+----------------------------+-------+--------------------------+---------------------------+------------+
++-------+------------+---------+--------------------------+-------+---------------------------+------------------------------------------------------+---------+
+|  Fid  |  Married   | Husband |       Husband Name       |  Wife |         Wife Name         |                       Children                       | Divorce |
++-------+------------+---------+--------------------------+-------+---------------------------+------------------------------------------------------+---------+
+|  @F1@ | 1965-05-11 |   @I2@  |   ['Adam', '/Kopec/']    |  @I3@ |  ['Helena', '/Mazurek/']  |               ['@I1@', '@I4@', '@I5@']               |   None  |
+|  @F2@ | 1955-05-11 |   @I6@  |   ['Jan', '/Mazurek/']   |  @I7@ |    ['Irene', '/Surma/']   | ['@I3@', '@I8@', '@I13@', '@I17@', '@I28@', '@I32@'] |   None  |
+|  @F3@ | 2005-07-07 |  @I11@  | ['Mariusz', '/McLovin/'] |  @I8@ |   ['Irene', '/Mazurek/']  |                      ['@I12@']                       |   None  |
+|  @F4@ | 1994-08-03 |   @I9@  |  ['Mikey', '/McSpicy/']  |  @I8@ |   ['Irene', '/Mazurek/']  |                      ['@I10@']                       |   None  |
+|  @F5@ | 1993-10-10 |  @I14@  | ['Zbigniew', '/Sudol/']  | @I13@ |  ['Teresa', '/Mazurek/']  |                  ['@I15@', '@I16@']                  |   None  |
+|  @F6@ | 1980-01-03 |  @I18@  | ['Wladyslaw', '/Krok/']  | @I17@ |   ['Mary', '/Mazurek/']   |         ['@I19@', '@I21@', '@I22@', '@I24@']         |   None  |
+|  @F7@ | 2014-08-29 |  @I20@  |  ['Rysiek', '/Osika/']   | @I19@ |  ['Aleksandra', '/Krok/'] |                          []                          |   None  |
+|  @F8@ |    None    |  @I23@  |           None           | @I22@ |  ['Robert', '/Niesika/']  |                          []                          |   None  |
+|  @F9@ | 1999-10-04 |  @I24@  |  ['Andrzej', '/Krok/']   | @I25@ |  ['Ewelina', '/Kiszka/']  |                  ['@I26@', '@I27@']                  |   None  |
+| @F10@ | 1990-06-30 |  @I28@  |   ['Jan', '/Mazurek/']   | @I29@ |    ['Jola', '/Labuda/']   |                  ['@I30@', '@I31@']                  |   None  |
+| @F11@ |    None    |  @I32@  |  ['Frank', '/Mazurek/']  | @I33@ | ['Maria', '/Pietraszek/'] |             ['@I34@', '@I35@', '@I38@']              |   None  |
+| @F12@ | 2003-01-05 |  @I36@  | ['Pawel', '/Jablecki/']  | @I35@ |  ['Joanna', '/Mazurek/']  |                      ['@I37@']                       |   None  |
+| @F13@ | 2010-08-28 |  @I38@  |  ['Paul', '/Mazurek/']   | @I39@ |   ['Diane', '/Mulawka/']  |                  ['@I40@', '@I41@']                  |   None  |
++-------+------------+---------+--------------------------+-------+---------------------------+------------------------------------------------------+---------+

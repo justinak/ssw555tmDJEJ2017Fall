@@ -1,6 +1,6 @@
-
-validTags = ['NAME', 'SEX', 'FAMS', ' FAMC', 'MARR', 'BIRT', 'WIFE', 'HUSB', 'CHIL', 'DEAT', 'DIV', 'DATE', 'HEAD','TRLR', 'NOTE',
-             'INDI', 'FAM']
+#List of all Valid Tags.
+validTags = ['NAME', 'SEX', 'FAMS', ' FAMC', 'MARR', 'BIRT', 'WIFE', 'HUSB', 'CHIL', 'DEAT', 'DIV', 'DATE', 'HEAD',
+             'TRLR', 'NOTE', 'INDI', 'FAM']
 
 # class for every gedcom tag line
 class GedLine(object):
@@ -27,7 +27,6 @@ class GedLine(object):
             else:
                 self.tag = list_Line[2]
                 self.ref = list_Line[1]
-
 
 # class for individual persons
 class Individuals(object):
