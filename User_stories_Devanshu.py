@@ -99,30 +99,3 @@ def unique_ids(individuals,families):
         US22_flag = False
 
     return US22_flag
-
-# # US22
-# def us22(individuals,families):
-#     """ US 22- Check for unique IDS"""
-#     error_type="US22"
-#     return_flag = True
-#     seen = set()
-#     notseen=set()
-#     uniq = []
-#     check=[]
-#     for indiv in individuals:
-#         indiv_id=indiv.uid
-#         check.append(indiv_id)
-#     for family in families:
-#         fam_id=family.uid
-#         check.append(fam_id)
-#     for x in check:
-#         if x not in seen:
-#             seen.add(x)
-#         else:
-#             notseen.add(x)
-#     for dup in notseen:
-#         error_descrip = "Duplicate ID Found"
-#         error_location = [dup]
-#         report_error('Error', error_type, error_descrip, error_location)
-#         return_flag = False
-#     return return_flag
