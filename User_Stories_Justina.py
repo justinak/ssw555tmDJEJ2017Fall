@@ -150,6 +150,20 @@ def less_than_150yrs(individuals):
         if indis.age > 150:
             location = [indis.IndId] 
             print('ERROR: FAMILY: US07:', location,':Age should be less than 150')
+            
+def living_married(individuals):
+    married_indis = [ ]
+    for indis in individuals:
+        if indis.alive == True and indis.fams == True:
+            married_indis.append(indis.name)
+    print('US30: Married people: ',married_indis)
+    
+def living_single(individuals):
+    single_indis = [ ]
+    for indis in individuals:
+        if indis.alive == True and indis.age > 30 and indis.fams == False:
+            single_indis.append(indis.name)
+    print('US31: Living single individuals: ',single_indis)
 
 
 
@@ -188,6 +202,8 @@ if __name__ == '__main__':
     unittest.main(exit=False, verbosity=3)
     marriage_age()
     less_than_150yrs()
+    living_married()
+    living_single()
 
 
 
