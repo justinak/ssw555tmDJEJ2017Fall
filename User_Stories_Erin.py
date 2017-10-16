@@ -3,7 +3,7 @@ from GIF_classes import GedLine, Individuals, Family
 
 from datetime import date
 from datetime import datetime
-
+from datetime import timedelta
 
 
 gedcom_file = 'GedcomFamilyJS.ged'
@@ -127,7 +127,6 @@ def GEDCOM_Reader(gedcom_file):
 
     return individual, family
 
-
 #user story 1, dates before dates
 def dates_before_dates(individuals, family):
     current_date = date.today()
@@ -138,7 +137,6 @@ def dates_before_dates(individuals, family):
     for ind_obj in individuals:
         if (ind_obj.birthday != None):
             if ind_obj.birthday > current_date:
-
                 print('ERROR: INDIVIDUAL: US01: [' + ind_obj.IndId + '] :Birthday before current date')
                 ind_bad_bday += [ind_obj.IndId]
         if (ind_obj.death_date != None):
@@ -157,15 +155,73 @@ def dates_before_dates(individuals, family):
                 #print('Error: ' + fam_obj.famId + ' Divorce date before current date')
     return [ind_bad_bday, ind_bad_death, fam_bad_marr, fam_bad_div]
 
+#user story 9, birth before death of parents
+def birth_before_parents_death(individuals, family):
+    for ind in individuals:
+        fam = None
+        mother = None
+        father = None
+        if len(ind.famc) > 0:
+            fam_id = ind.famc[0]
+            for f in family:
+                if fam_id == f.famId:
+                    fam = f
+            mother_id = fam.husbandId
+            father_id = fam.wifeId
+            for i in individuals:
+                if i.IndId == mother_id:
+                    mother = i
+                elif i.IndId == father_id:
+                    father = i
+            person_bday = ind.birthday
+            mom_dday = mother.death_date
+            dad_dday = father.death_date
+            if (mom_dday != None):
+                if (mom_dday < person_bday):
+                    print('ERROR: FAMILY : US9: [' + ind.IndId + '] : Born before parents death day ')
+            if (dad_dday != None):
+               if (dad_dday - timedelta(months=9) < person_bday):
+                   print('ERROR: FAMILY : US9: [' + ind.IndId + '] : Born before parents death day ')
+
+
+#user story 11, no bigamy
+def no_bigamy(individuals, family):
+    for ind in individuals:
+        marriages = 0
+        for f in family:
+            if f.husbandId == ind.IndId and currently_married(f, individuals):
+                marriages += 1
+            elif f.wifeId == ind.IndId and currently_married(f,individuals):
+                marriages += 1
+        if marriages > 1:
+            print('ERROR: FAMILY: US11: ' + ind.name[0] + " is married more to more than one person")
+
+
+def currently_married(family, individuals):
+    if family.divorced != None:
+        return False
+    hus_id = family.husbandId
+    wife_id = family.wifeId
+    husband = None
+    wife = None
+    for i in individuals:
+        if wife_id == i.IndId:
+            wife = i
+        elif hus_id == i.IndId:
+            husband = i
+    if husband.death_date != None:
+        return False
+    if wife.death_date != None:
+        return False
+    return True
 
 #User story 16, male last names
-
-def male_last_names(inds, fams):
-    for ind in inds:
+def male_last_names(individuals, family):
+    for ind in individuals:
         if ind.gender == "M":
             if len(ind.famc) > 0:
                 for famc in ind.famc:
-                    for fam in fams:
+                    for fam in family:
                         if fam.famId == famc:
                             if not ind.name[1] == fam.husband_Name[1]:
                                 print('ERROR: FAMILY : US16: [' + ind.IndId + '] :Sons last names should match fathers ')
