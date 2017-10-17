@@ -196,28 +196,35 @@ def main():
     
 #user story was to make sure that siblings could not marry each other
 def checkIncest(families):
-  Story_name = "US10"
+  Story_name = "US18"
   error_msg = "Siblings cannot marry"
-  
-    for family in families:
-        for child1 in family.children:
-            for child2 in family.children:
-                for marriage in families:
-                    if child1 == child2:
-                        pass
-                    elif(child1 == marriage.wife_Name or child1 == marriage.husband_Name) and (child2 == marriage.wife_Name or child2 == marriage.husband_Name):
-                        location = [child1, child2]
-                        error = (Story_name, error_msg, location)
-                        return error 
+
+  for family in families:
+    for child1 in family.children:
+        for child2 in family.children:
+            for marriage in families:
+                if child1 == child2:
+                    pass
+                elif(child1 == marriage.wife_Name or child1 == marriage.husband_Name) and (child2 == marriage.wife_Name or child2 == marriage.husband_Name):
+                    location = [child1, child2]
+                    error = (Story_name, error_msg, location)
+                    return error 
 
 def check_genderrole(individuals,families):
+    Story_name = "US21"
+    error_msg = "Gender role does not match"
+    
     for family in families:
         for individual in individuals:
             if (individual.IndId == family.husbandId and individual.gender != "M"):
-                return "Gender role of " + " ".join(individual.IndId) + " does not match"
+                location = [individual.IndId]
+                error = (Story_name, error_msg, location)
+                return error
             elif (individual.IndId == family.wifeId and individual.gender != "F"):
-                return "Gender role of " + " ".join(individual.IndId) + " does not match"
-
+                location = [individual.IndId]
+                error = (Story_name, error_msg, location)
+                return error
+            
 def marriage_before_divorce(families):
     Story_name = "US04"
     error_msg = "Marriage should occur before divorce"
@@ -245,19 +252,18 @@ def marriage_before_death(individuals, families):
 class Test_checkIncest(unittest.TestCase):
     #One sibling married another sibling
     def test_1(self):
-        self.assertEqual(checkIncest(GEDCOM_Reader('Jhustin1.ged')[1]),  "@I1@ and @I11@ are siblings and cannot marry",'This is incest')
+        self.assertEqual(checkIncest(GEDCOM_Reader('Jhustin1.ged')[1]),  ('US18', 'Siblings cannot marry', ['@I1@', '@I11@']),'This is incest')
         #Husband is a female
     def test_2(self):
-        self.assertEqual(check_genderrole(*GEDCOM_Reader('Jhustin1.ged')),'Gender role of @ I 2 @ does not match','Should be fine')
+        self.assertEqual(check_genderrole(*GEDCOM_Reader('Jhustin1.ged')), ('US21', 'Gender role does not match', ['@I2@']),'Should be fine')
     #Divorce happens before the date of marriage    
     def test_3(self):
-        self.assertEqual(marriage_before_divorce(GEDCOM_Reader('Jhustin1.ged')[1]),('US04', 'Marriage should occur before divorce', ['@I4@', '@I5@']),'Should be fine')
+        self.assertEqual(marriage_before_divorce(GEDCOM_Reader('Jhustin1.ged')[1]), ('US04', 'Marriage should occur before divorce', ['@I4@', '@I5@']),'Should be fine')
     #Death happens before the date of marriage    
     def test_4(self):
-        self.assertEqual(marriage_before_death(*GEDCOM_Reader('Jhustin1.ged')),('US05', 'Marriage should occur before death', ['@I4@']),'Should be fine')
+        self.assertEqual(marriage_before_death(*GEDCOM_Reader('Jhustin1.ged')), ('US05', 'Marriage should occur before death', ['@I4@']),'Should be fine')
 
-    
-    
+        
 if __name__ == '__main__':
     sys.stdout = open("PR3-output.txt","w")
     unittest.main()
