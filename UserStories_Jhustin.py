@@ -190,12 +190,15 @@ def main():
 
     print(check_genderrole(individual, families))
 
-    print(marriage_before_divorce(families) or "")
+    print(marriage_before_divorce(families))
 
-    print(marriage_before_death(individual, families) or "")
+    print(marriage_before_death(individual, families))
     
 #user story was to make sure that siblings could not marry each other
 def checkIncest(families):
+  Story_name = "US10"
+  error_msg = "Siblings cannot marry"
+  
     for family in families:
         for child1 in family.children:
             for child2 in family.children:
@@ -203,7 +206,9 @@ def checkIncest(families):
                     if child1 == child2:
                         pass
                     elif(child1 == marriage.wife_Name or child1 == marriage.husband_Name) and (child2 == marriage.wife_Name or child2 == marriage.husband_Name):
-                        return child1 + " and " + child2 + " are siblings and cannot marry" 
+                        location = [child1, child2]
+                        error = (Story_name, error_msg, location)
+                        return error 
 
 def check_genderrole(individuals,families):
     for family in families:
