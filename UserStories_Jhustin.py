@@ -266,6 +266,6 @@ class Test_checkIncest(unittest.TestCase):
         
 if __name__ == '__main__':
     sys.stdout = open("PR3-output.txt","w")
-    unittest.main()
+    #unittest.main()
     main()
     sys.stdout.close()
