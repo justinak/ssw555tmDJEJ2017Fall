@@ -21,6 +21,13 @@ def marriage_age(individuals, families):
             if fam.marriage.year - wifeId.birthday.year <= 14:
                 location = [wifeId.IndId]
                 print('ERROR: FAMILY: US10:', location,':Marriage before age 14')
+                
+def less_than_150yrs(individuals):
+    """ User Story 07 - Less Than 150 years"""
+    for indis in individuals:
+        if indis.age > 150:
+            location = [indis.IndId] 
+            print('ERROR: FAMILY: US07:', location,':Age should be less than 150')
                     
 def living_married(individuals):
     """ User Story 30 - List all living married people """
@@ -28,15 +35,8 @@ def living_married(individuals):
         if indis.alive == True:
             spouse = indis.fams
             if spouse:
-                married_indis = []
+                married_indis = [indis.name]
                 print('US30: Married people: ',married_indis)
-        
-def less_than_150yrs(individuals):
-    """ User Story 07 - Less Than 150 years"""
-    for indis in individuals:
-        if indis.age > 150:
-            location = [indis.IndId] 
-            print('ERROR: FAMILY: US07:', location,':Age should be less than 150')
     
 def living_single(individuals):
     """ User Story 31 - List all living single people """
