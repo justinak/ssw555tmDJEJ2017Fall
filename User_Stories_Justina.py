@@ -25,9 +25,11 @@ def marriage_age(individuals, families):
 def living_married(individuals):
     """ User Story 30 - List all living married people """
     for indis in individuals:
-        if indis.alive == True and indis.fams != None:
-            married_indis = [indis.name]
-            print('US30: Married people: ',married_indis)
+        if indis.alive == True:
+            spouse = indis.fams
+            if spouse:
+                married_indis = []
+                print('US30: Married people: ',married_indis)
         
 def less_than_150yrs(individuals):
     """ User Story 07 - Less Than 150 years"""
@@ -39,9 +41,11 @@ def less_than_150yrs(individuals):
 def living_single(individuals):
     """ User Story 31 - List all living single people """
     for indis in individuals:
-        if indis.alive == True and indis.age < 30 and indis.fams == None:
-            single_indis = [indis.name]
-            print('US31: Living single individuals: ',single_indis)
+        if indis.alive == True and indis.age > 30:
+            spouse = indis.fams
+            if not spouse:
+                single_indis = [indis.name]
+                print('US31: Living single individuals: ',single_indis)
         
         
 
