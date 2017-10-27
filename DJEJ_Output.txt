@@ -1,0 +1,76 @@
+ERROR MESSAGES
+
+ERROR: INDIVIDUAL: US02: [@I1@] : Husband is born after marriage.
+ERROR: INDIVIDUAL: US03: [@I4@] : Birth should occur before death.
+ERROR: INDIVIDUAL: US08: [@I9@] : Child born before marriage of parents
+ERROR: INDIVIDUAL: US08: [@I11@] : Child born before marriage of parents
+ERROR: INDIVIDUAL: US08: [@I3@] : Child born before marriage of parents
+ERROR: FAMILY: US22: [@F3@] : ID already exists
+ERROR: INDIVIDUAL: US23: 1863-12-09 : Birthdate already exists : at ID :@I3@
+ERROR: INDIVIDUAL: US23: 1863-12-09 : Birthdate already exists : at ID :@I2@
+ERROR: INDIVIDUAL: US23: ['Natalie', '/Moore/'] : Name already exists : at ID :@I12@
+ERROR: INDIVIDUAL: US23: ['Natalie', '/Moore/'] : Name already exists : at ID :@I3@
+ERROR: FAMILY: US25: ['Natalie', '/Moore/'] : Child-Name is not unique
+ERROR: FAMILY: US25: ['Natalie', '/Moore/'] : Child-Name is not unique
+ERROR: FAMILY: US07: ['@I2@'] :Age should be less than 150
+ERROR: FAMILY: US07: ['@I3@'] :Age should be less than 150
+ERROR: FAMILY: US10: ['@I1@'] :Marriage before age 14
+ERROR: FAMILY: US10: ['@I11@'] :Marriage before age 14
+ERROR: FAMILY: US10: ['@I4@'] :Marriage before age 14
+ERROR: FAMILY: US10: ['@I6@'] :Marriage before age 14
+ERROR: FAMILY: US10: ['@I5@'] :Marriage before age 14
+ERROR: FAMILY: US10: ['@I1@'] :Marriage before age 14
+US30: Married people:  ['Jhustin', '/Scarlettt/']
+US30: Married people:  ['Brian', '/Scarlett/']
+US30: Married people:  ['Natalie', '/Moore/']
+US30: Married people:  ['Jenita', '/Drummond/']
+US30: Married people:  ['Lennox', '/Nelson/']
+US30: Married people:  ['Mary', '/Scarlett/']
+US30: Married people:  ['Natalie', '/Moore/']
+US31: Living single individuals:  ['Chadwick', '/Nelson/']
+US31: Living single individuals:  ['Dillon', '/Nelson/']
+US31: Living single individuals:  ['Antoinette', '/Moore/']
+ERROR: INDIVIDUAL: US01: [@I12@] :Birthday before current date
+ERROR: FAMILY : US9: [@F3@ , @I12@] : Born before parents death day 
+ERROR: FAMILY : US9: [@F3@ , @I12@] : Born before parents death day 
+ERROR: FAMILY : US9: [@F3@ , @I12@] : Born before parents death day 
+ERROR: FAMILY: US11: Jhustin is married more to more than one person
+ERROR: FAMILY: US11: Natalie is married more to more than one person
+ERROR: FAMILY : US16: [@I1@] :Sons last names should match fathers 
+ERROR: FAMILY: US04: [@I4@ , @I5@] : Marriage should occur before divorce
+ERROR: FAMILY: US05: [@I4@] : Marriage should occur before death
+ERROR: FAMILY: US18: Siblings cannot marry each other
+ERROR: FAMILY: US18: Siblings cannot marry each other
+ERROR: INDIVIDUAL: US21: Gender role of [Brian /Scarlett/] does not match
+
+INDIVIDUAL TABLE
+
++-------+----------------------------+------------+------+--------+------------+-------+----------+------------------+
+|   id  |            Name            |  Birthday  | Age  | Gender |   Death    | Alive |  Child   |      Spouse      |
++-------+----------------------------+------------+------+--------+------------+-------+----------+------------------+
+|  @I1@ | ['Jhustin', '/Scarlettt/'] | 2010-08-11 |  7   |   M    |    None    |  True | ['@F2@'] |     ['@F1@']     |
+|  @I2@ |  ['Brian', '/Scarlett/']   | 1863-12-09 | 154  |   F    |    None    |  True |    []    |     ['@F2@']     |
+|  @I3@ |   ['Natalie', '/Moore/']   | 1863-12-09 | 154  |   F    |    None    |  True | ['@F3@'] |     ['@F2@']     |
+|  @I4@ |  ['Franklin', '/Moore/']   | 1986-02-09 |  31  |   M    | 1974-04-13 | False |    []    |     ['@F3@']     |
+|  @I5@ |  ['Jenita', '/Drummond/']  | 1951-04-15 |  66  |   F    |    None    |  True |    []    | ['@F3@', '@F4@'] |
+|  @I6@ |   ['Lennox', '/Nelson/']   | 1947-06-11 |  70  |   M    |    None    |  True |    []    |     ['@F4@']     |
+|  @I7@ |  ['Chadwick', '/Nelson/']  | 1983-10-12 |  34  |   M    |    None    |  True | ['@F4@'] |        []        |
+|  @I8@ |   ['Dillon', '/Nelson/']   | 1980-11-16 |  37  |   M    |    None    |  True | ['@F4@'] |        []        |
+|  @I9@ | ['Brendon', '/Scarlett/']  | 1998-12-24 |  19  |   M    |    None    |  True | ['@F2@'] |        []        |
+| @I10@ | ['Antoinette', '/Moore/']  | 1980-06-03 |  37  |   F    |    None    |  True | ['@F3@'] |        []        |
+| @I11@ |   ['Mary', '/Scarlett/']   | 2000-01-05 |  17  |   F    |    None    |  True | ['@F2@'] |     ['@F1@']     |
+| @I12@ |   ['Natalie', '/Moore/']   | 2980-08-14 | -963 |   F    |    None    |  True | ['@F3@'] |     ['@F2@']     |
++-------+----------------------------+------------+------+--------+------------+-------+----------+------------------+
+
+
+FAMILY TABLE
+
++------+------------+---------+----------------------------+-------+--------------------------+----------------------------+------------+
+| Fid  |  Married   | Husband |        Husband Name        |  Wife |        Wife Name         |          Children          |  Divorce   |
++------+------------+---------+----------------------------+-------+--------------------------+----------------------------+------------+
+| @F1@ | 2009-06-09 |   @I1@  | ['Jhustin', '/Scarlettt/'] | @I11@ |  ['Mary', '/Scarlett/']  |             []             |    None    |
+| @F2@ | 2009-06-09 |   @I2@  |  ['Brian', '/Scarlett/']   |  @I3@ |  ['Natalie', '/Moore/']  | ['@I1@', '@I9@', '@I11@']  |    None    |
+| @F3@ | 1976-03-08 |   @I4@  |  ['Franklin', '/Moore/']   |  @I5@ | ['Jenita', '/Drummond/'] | ['@I3@', '@I10@', '@I12@'] | 1975-06-14 |
+| @F4@ | 1922-06-09 |   @I6@  |   ['Lennox', '/Nelson/']   |  @I5@ | ['Jenita', '/Drummond/'] |      ['@I7@', '@I8@']      |    None    |
+| @F3@ | 1947-03-08 |   @I1@  | ['Jhustin', '/Scarlettt/'] |  @I3@ |  ['Natalie', '/Moore/']  |             []             |    None    |
++------+------------+---------+----------------------------+-------+--------------------------+----------------------------+------------+

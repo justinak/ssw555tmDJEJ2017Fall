@@ -1,4 +1,5 @@
 #Declaring the data-structure where the location of error will be stored.
+import collections
 error_locations = []
 
 #Default path of Gedcom file.
@@ -20,19 +21,17 @@ def birth_before_marriage(individuals, families):
                 if indis.IndId == fam.wifeId:
                     wifeId = indis
 
-            if wifeId.birthday > fam.marriage:
+            if wifeId.birthday.year > fam.marriage.year:
                 # Found a case spouse marries before birthday
                 error_msg = "Wife is born after marriage."
                 location = [wifeId.IndId]
-                error = (Story_name, error_msg, location)
-                print(error)
+                print("ERROR: INDIVIDUAL: " + Story_name + ": [" + wifeId.IndId + "] : " + error_msg)
                 US02_flag = False
 
             if husbandId.birthday > fam.marriage:
                 error_msg = "Husband is born after marriage."
                 location = [husbandId.IndId]
-                error = (Story_name, error_msg, location)
-                print(error)
+                print("ERROR: INDIVIDUAL: " + Story_name + ": [" + husbandId.IndId + "] : " + error_msg)
                 US02_flag = False
 
         return US02_flag
@@ -49,8 +48,7 @@ def birth_before_death(individuals):
                                                   #  then the "<" is not allowed to execute between an instance of
                                                   # none type and an instance of datetime.date.
                 location = [indis.IndId] # gives ID location where the error occurs
-                error = (Story_name,error_msg,location)
-                print(error)
+                print("ERROR: INDIVIDUAL: " + Story_name + ": [" + indis.IndId + "] : " + error_msg)
 
                 US03_flag = False
     return US03_flag
@@ -68,8 +66,7 @@ def child_before_marriage(individuals, families):
                     if bday.year < fam.marriage.year:
                         error_msg = "Child born before marriage of parents"
                         error_location = [indis.IndId]
-                        error = (Story_name, error_msg, error_location)
-                        print(error)
+                        print("ERROR: INDIVIDUAL: " + Story_name + ": [" + indis.IndId + "] : " + error_msg)
                         US08_flag = False
     return US08_flag
 
@@ -93,9 +90,62 @@ def unique_ids(individuals,families):
             unique.add(x)
 
     for y in unique:
-        error_locations = [y]
-        error = (Story_name, error_msg, error_locations)
-        print(error)
+        print("ERROR: FAMILY: " + Story_name + ": [" + y + "] : " + error_msg)
         US22_flag = False
 
     return US22_flag
+
+#User Story 23: Unique name and Birthdate
+def uniq_name_birthdate(individuals):
+    Story_name = "US23"
+    US23_flag = True
+
+    for individual in individuals:
+        for indis in individuals:
+
+            # Checking for individual duplicate names
+            if individual.name and indis.name:
+                if individual.name == indis.name:
+                    if individual.IndId != indis.IndId:
+                        Duplicate_name = str(individual.name)
+                        error_msg = "Name already exists"
+                        print("ERROR: INDIVIDUAL: " + Story_name + ": " + Duplicate_name + " : " + error_msg + " : at ID :" + indis.IndId)
+                        US23_flag = False
+
+            # Checking for individual duplicate birthdates
+            if indis.birthday and individual.birthday:
+                if indis.birthday == individual.birthday:
+                    if individual.IndId != indis.IndId:
+                        Duplicate_birthday = str(individual.birthday)
+                        error_msg = "Birthdate already exists"
+                        print("ERROR: INDIVIDUAL: " + Story_name + ": " + Duplicate_birthday + " : " + error_msg + " : at ID :" + indis.IndId)
+                        US23_flag = False
+
+    return US23_flag
+
+#User Story 25: Unique first names in families
+def uniq_family_names(individuals,families):
+    Story_name = "US25"
+    US25_flag = True
+    exist = set()
+    unique = set()
+    for fam in families:
+        if fam.marriage is not None:
+            if len(fam.children) != 0:
+                Child_Id= fam.children
+            else:
+                continue
+
+    for indis in individuals:
+        for x in Child_Id:
+            if x not in exist:
+                exist.add(x)
+            else:
+                unique.add(x)
+
+    for y in unique:
+        error_msg = "Child-Name is not unique"
+        print("ERROR: FAMILY: " + Story_name + ": " + str(indis.name) + " : " + error_msg)
+        US25_flag = False
+
+    return US25_flag

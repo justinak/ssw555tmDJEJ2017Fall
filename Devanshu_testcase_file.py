@@ -27,6 +27,16 @@ class TestUserStories(unittest.TestCase):
         self.assertTrue(unique_ids(indis, fam))
         print("US22 testcase passed")
 
+    def test_us23(self):
+        indis,  = GEDCOM_Reader(gedcom_file)
+        self.assertTrue(unique_ids(indis))
+        print("US22 testcase passed")
+
+    def test_us25(self):
+        indis, fam = GEDCOM_Reader(gedcom_file)
+        self.assertTrue(unique_ids(indis, fam))
+        print("US22 testcase passed")
+
 if __name__ == '__main__':
     unittest.main(exit=False, verbosity=3)
     birth_before_death()
