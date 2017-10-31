@@ -193,6 +193,8 @@ def main():
     print(marriage_before_divorce(families))
 
     print(marriage_before_death(individual, families))
+    print(divorce_before_death(individual, families))
+    print(illegitimate_date(individual, families))
     
 #user story was to make sure that siblings could not marry each other
 def checkIncest(families):
@@ -247,6 +249,29 @@ def marriage_before_death(individuals, families):
                     location = [individual.IndId]
                     error = (Story_name, error_msg, location)
                     return error 
+                  
+def divorce_before_death(individuals, families):
+    Story_name = "US06"
+    error_msg = "Divorce should occur before death"
+    
+    for family in families:
+        for individual in individuals:
+            if individual.IndId in [family.husbandId, family.wifeId] and individual.death_date and family.divorced:
+                if individual.death_date <= family.divorced:
+                    location = [individual.IndId]
+                    error = (Story_name, error_msg, location)
+                    return error
+
+def illegitimate_date(individuals, families):
+    Story_name = "US42"
+    error_msg = "Date does not exist"
+
+    for family in families:
+        for individual in individuals:
+            if ValueError: 
+                location = [individual.IndId]
+                error = (Story_name, error_msg, location)
+                return error
 
 
 class Test_checkIncest(unittest.TestCase):
