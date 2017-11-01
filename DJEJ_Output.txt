@@ -1,0 +1,132 @@
+ERROR MESSAGES
+
+ERROR: INDIVIDUAL: US02: [@I1@] : Husband is born after marriage.
+ERROR: INDIVIDUAL: US03: [@I4@] : Birth should occur before death.
+ERROR: INDIVIDUAL: US08: [@I9@] : Child born before marriage of parents
+ERROR: INDIVIDUAL: US08: [@I11@] : Child born before marriage of parents
+ERROR: INDIVIDUAL: US08: [@I3@] : Child born before marriage of parents
+ERROR: FAMILY: US22: [@F3@] : ID already exists
+ERROR: INDIVIDUAL: US23: 1863-12-09 : Birthdate already exists : at ID :@I3@
+ERROR: INDIVIDUAL: US23: 1863-12-09 : Birthdate already exists : at ID :@I2@
+ERROR: INDIVIDUAL: US23: ['Natalie', '/Moore/'] : Name already exists : at ID :@I12@
+ERROR: INDIVIDUAL: US23: ['Natalie', '/Moore/'] : Name already exists : at ID :@I3@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I17@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I18@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I19@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I20@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I21@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I16@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I18@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I19@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I20@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I21@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I16@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I17@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I19@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I20@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I21@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I16@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I17@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I18@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I20@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I21@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I16@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I17@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I18@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I19@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I21@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I16@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I17@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I18@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I19@
+ERROR: INDIVIDUAL: US23: 2017-08-01 : Birthdate already exists : at ID :@I20@
+ERROR: FAMILY: US25: ['Fff', '', '/Aaa/'] : Child-Name is not unique
+ERROR: FAMILY: US25: ['Fff', '', '/Aaa/'] : Child-Name is not unique
+ERROR: FAMILY: US07: ['@I2@'] :Age should be less than 150
+ERROR: FAMILY: US07: ['@I3@'] :Age should be less than 150
+ERROR: FAMILY: US07: ['@I14@'] :Age should be less than 150
+ERROR: FAMILY: US07: ['@I15@'] :Age should be less than 150
+ERROR: FAMILY: US10: ['@I1@'] :Marriage before age 14
+ERROR: FAMILY: US10: ['@I11@'] :Marriage before age 14
+ERROR: FAMILY: US10: ['@I4@'] :Marriage before age 14
+ERROR: FAMILY: US10: ['@I6@'] :Marriage before age 14
+ERROR: FAMILY: US10: ['@I5@'] :Marriage before age 14
+ERROR: FAMILY: US10: ['@I1@'] :Marriage before age 14
+ERROR: US30: Married people:  ['Jhustin', '/Scarlettt/']
+ERROR: US30: Married people:  ['Brian', '/Scarlett/']
+ERROR: US30: Married people:  ['Natalie', '/Moore/']
+ERROR: US30: Married people:  ['Jenita', '/Drummond/']
+ERROR: US30: Married people:  ['Lennox', '/Nelson/']
+ERROR: US30: Married people:  ['Mary', '/Scarlett/']
+ERROR: US30: Married people:  ['Aaa', '/Aaa/']
+ERROR: US30: Married people:  ['Bbb', '', '/Aaa/']
+ERROR: US30: Married people:  ['Ccc', '', '/Aaa/']
+ERROR: US30: Married people:  ['Ddd', '', '/Aaa/']
+ERROR: US30: Married people:  ['Eee', '', '/Aaa/']
+ERROR: US30: Married people:  ['Fff', '', '/Aaa/']
+ERROR: US31: Living single individuals:  ['Chadwick', '/Nelson/']
+ERROR: US31: Living single individuals:  ['Dillon', '/Nelson/']
+ERROR: US31: Living single individuals:  ['Antoinette', '/Moore/']
+ERROR: US35: Recent births:  ['Natalie', '/Moore/']
+ERROR: US35: Recent births:  ['Marilyn', '/Monroe/']
+ERROR: US36: Recent deaths:  ['George', '/Washington/']
+ERROR: INDIVIDUAL: US01: [@I12@] :Birthday before current date
+ERROR: FAMILY : US9: [@F3@ , @I21@] : Born before parents death day 
+ERROR: FAMILY : US9: [@F3@ , @I21@] : Born before parents death day 
+ERROR: FAMILY : US9: [@I21@] : Born before parents death day 
+ERROR: FAMILY : US9: [@I21@] : Born before parents death day 
+ERROR: FAMILY : US9: [@I21@] : Born before parents death day 
+ERROR: FAMILY : US9: [@I21@] : Born before parents death day 
+ERROR: FAMILY : US9: [@I21@] : Born before parents death day 
+ERROR: FAMILY : US9: [@I21@] : Born before parents death day 
+ERROR: FAMILY: US11: Jhustin is married more to more than one person
+ERROR: FAMILY: US11: Natalie is married more to more than one person
+ERROR: FAMILY : US16: [@I1@] :Sons last names should match fathers 
+ERROR: FAMILY : US16: [@I16@] :Sons last names should match fathers 
+ERROR: FAMILY : US16: [@I17@] :Sons last names should match fathers 
+ERROR: FAMILY : US16: [@I18@] :Sons last names should match fathers 
+ERROR: FAMILY : US16: [@I19@] :Sons last names should match fathers 
+ERROR: FAMILY : US16: [@I20@] :Sons last names should match fathers 
+ERROR: FAMILY : US16: [@I21@] :Sons last names should match fathers 
+
+INDIVIDUAL TABLE
+
++-------+----------------------------+------------+------+--------+------------+-------+----------+------------------+
+|   id  |            Name            |  Birthday  | Age  | Gender |   Death    | Alive |  Child   |      Spouse      |
++-------+----------------------------+------------+------+--------+------------+-------+----------+------------------+
+|  @I1@ | ['Jhustin', '/Scarlettt/'] | 2010-08-11 |  7   |   M    |    None    |  True | ['@F2@'] |     ['@F1@']     |
+|  @I2@ |  ['Brian', '/Scarlett/']   | 1863-12-09 | 154  |   F    |    None    |  True |    []    |     ['@F2@']     |
+|  @I3@ |   ['Natalie', '/Moore/']   | 1863-12-09 | 154  |   F    |    None    |  True | ['@F3@'] |     ['@F2@']     |
+|  @I4@ |  ['Franklin', '/Moore/']   | 1986-02-09 |  31  |   M    | 1974-04-13 | False |    []    |     ['@F3@']     |
+|  @I5@ |  ['Jenita', '/Drummond/']  | 1951-04-15 |  66  |   F    |    None    |  True |    []    | ['@F3@', '@F4@'] |
+|  @I6@ |   ['Lennox', '/Nelson/']   | 1947-06-11 |  70  |   M    |    None    |  True |    []    |     ['@F4@']     |
+|  @I7@ |  ['Chadwick', '/Nelson/']  | 1983-10-12 |  34  |   M    |    None    |  True | ['@F4@'] |        []        |
+|  @I8@ |   ['Dillon', '/Nelson/']   | 1980-11-16 |  37  |   M    |    None    |  True | ['@F4@'] |        []        |
+|  @I9@ | ['Brendon', '/Scarlett/']  | 1998-12-24 |  19  |   M    |    None    |  True | ['@F2@'] |        []        |
+| @I10@ | ['Antoinette', '/Moore/']  | 1980-06-03 |  37  |   F    |    None    |  True | ['@F3@'] |        []        |
+| @I11@ |   ['Mary', '/Scarlett/']   | 2000-01-05 |  17  |   F    |    None    |  True | ['@F2@'] |     ['@F1@']     |
+| @I12@ |   ['Natalie', '/Moore/']   | 2980-08-14 | -963 |   F    |    None    |  True |    []    |        []        |
+| @I13@ |  ['Marilyn', '/Monroe/']   | 2017-10-28 |  0   |   F    |    None    |  True | ['@F1@'] |        []        |
+| @I14@ | ['George', '/Washington/'] | 1732-02-22 | 285  |   M    | 2017-10-13 | False |    []    |     ['@F6@']     |
+| @I15@ | ['Martha', '/Washington/'] | 1731-06-13 | 286  |   F    | 1802-05-22 | False |    []    |     ['@F6@']     |
+| @I16@ |      ['Aaa', '/Aaa/']      | 2017-08-01 |  0   |   M    |    None    |  True | ['@F6@'] |     ['@F6@']     |
+| @I17@ |    ['Bbb', '', '/Aaa/']    | 2017-08-01 |  0   |   M    |    None    |  True | ['@F6@'] |     ['@F6@']     |
+| @I18@ |    ['Ccc', '', '/Aaa/']    | 2017-08-01 |  0   |   M    |    None    |  True | ['@F6@'] |     ['@F6@']     |
+| @I19@ |    ['Ddd', '', '/Aaa/']    | 2017-08-01 |  0   |   M    |    None    |  True | ['@F6@'] |     ['@F6@']     |
+| @I20@ |    ['Eee', '', '/Aaa/']    | 2017-08-01 |  0   |   M    |    None    |  True | ['@F6@'] |     ['@F6@']     |
+| @I21@ |    ['Fff', '', '/Aaa/']    | 2017-08-01 |  0   |   M    |    None    |  True | ['@F6@'] |     ['@F6@']     |
++-------+----------------------------+------------+------+--------+------------+-------+----------+------------------+
+
+
+FAMILY TABLE
+
++------+------------+---------+----------------------------+-------+----------------------------+----------------------------+------------+
+| Fid  |  Married   | Husband |        Husband Name        |  Wife |         Wife Name          |          Children          |  Divorce   |
++------+------------+---------+----------------------------+-------+----------------------------+----------------------------+------------+
+| @F1@ | 2009-06-09 |   @I1@  | ['Jhustin', '/Scarlettt/'] | @I11@ |   ['Mary', '/Scarlett/']   |         ['@I13@']          |    None    |
+| @F2@ | 2009-06-09 |   @I2@  |  ['Brian', '/Scarlett/']   |  @I3@ |   ['Natalie', '/Moore/']   | ['@I1@', '@I9@', '@I11@']  |    None    |
+| @F3@ | 1976-03-08 |   @I4@  |  ['Franklin', '/Moore/']   |  @I5@ |  ['Jenita', '/Drummond/']  | ['@I3@', '@I10@', '@I12@'] | 1975-06-14 |
+| @F4@ | 1922-06-09 |   @I6@  |   ['Lennox', '/Nelson/']   |  @I5@ |  ['Jenita', '/Drummond/']  |      ['@I7@', '@I8@']      |    None    |
+| @F3@ | 1947-03-08 |   @I1@  | ['Jhustin', '/Scarlettt/'] |  @I3@ |   ['Natalie', '/Moore/']   |             []             |    None    |
+| @F6@ | 1760-06-01 |  @I14@  | ['George', '/Washington/'] | @I15@ | ['Martha', '/Washington/'] |             []             |    None    |
++------+------------+---------+----------------------------+-------+----------------------------+----------------------------+------------+
