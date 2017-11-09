@@ -1,15 +1,15 @@
 import sys
 
 from prettytable import PrettyTable
-from PythonFiles.User_stories_Devanshu import birth_before_death, birth_before_marriage, child_before_marriage, unique_ids, uniq_name_birthdate, uniq_family_names
-from PythonFiles.User_stories_Erin import dates_before_dates, birth_before_death_of_parents, male_last_names, no_bigamy, sibling_spacing, multiple_births
-from PythonFiles.User_Stories_Justina import marriage_age, living_single, living_married, less_than_150yrs, recent_births_deaths
-from PythonFiles.UserStories_Jhustin import check_genderrole, checkIncest, marriage_before_death, marriage_before_divorce, divorce_before_death, illegitimate_date
+from PythonFiles.User_stories_Devanshu import birth_before_death, birth_before_marriage, child_before_marriage, unique_ids, uniq_name_birthdate, uniq_family_names, lmb, par_not_desc
+from PythonFiles.User_stories_Erin import  dates_before_dates, birth_before_death_of_parents, male_last_names, no_bigamy, multiple_births, sibling_spacing
+from  PythonFiles.User_Stories_Justina import marriage_age, living_single, living_married, less_than_150yrs, recent_births_deaths
+from PythonFiles.User_stories_Jhustin import check_genderrole, checkIncest, marriage_before_death, marriage_before_divorce, divorce_before_death, illegitimate_date
 
 from PythonFiles.GedcomReader import GEDCOM_Reader
 
 #default file path
-gedcom_file = '../Files/DJEJ_family_erin.txt'
+gedcom_file = 'C:\Devanshu\Python Project\Files\DJEJ_family_erin'
 
 indi = PrettyTable()
 fam = PrettyTable()
@@ -52,7 +52,8 @@ def main():
     unique_ids(individual, families) #US-22
     uniq_name_birthdate(individual) #US-23
     uniq_family_names(individual, families) #US-25
-
+    lmb(individual) #US-32
+    par_not_desc(families) #US-17
 
     #printing Justina's user stories
     less_than_150yrs(individual) #US-7
@@ -74,14 +75,14 @@ def main():
     marriage_before_death(individual, families)  # US-5
     checkIncest(families)  # US-18
     check_genderrole(individual, families)  # US-21
-    divorce_before_death(individual, families) # US-6
-    illegitimate_date(individual, families) #US-42
+    divorce_before_death(individual, families) #US-06
+    illegitimate_date(individual,families) #US-42
 
     # printing values from gedcom_file
     Summary_tables(individual, families)
 
 
 if __name__ == '__main__':
-    sys.stdout = open("../Files/DJEJ_Output.txt","w")
+    sys.stdout = open("DJEJ_Output.txt","w")
     main()
     sys.__stdout__.close()
