@@ -30,7 +30,7 @@ def dates_before_dates(individuals, family):
                  #print('Error: ' + fam_obj.famId + ' Divorce date before current date')
      return [ind_bad_bday, ind_bad_death, fam_bad_marr, fam_bad_div]
 
-# US09 - Birth before death of parents
+# User Story 9, Birth before death of parents
 def birth_before_death_of_parents(individuals, families):
     US09_flag = True
     error_type = "US09"
@@ -154,7 +154,7 @@ def multiple_births(individuals, family):
                 print("ERROR: FAMILY : US14: Too many births at once in " + single_family.famId)
     return error_messages
 
-#US 12
+#User Story 12, parents not too old
 def parents_too_old(individuals, family):
     familes_parents_too_old = []
     for fam in family:
@@ -182,6 +182,7 @@ def parents_too_old(individuals, family):
                 familes_parents_too_old += [fam]
     return familes_parents_too_old
 
+#User story 33, list all orphans
 def list_orphans(individuals,family):
     orphans = []
     for i in individuals:
