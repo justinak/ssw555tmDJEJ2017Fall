@@ -183,7 +183,6 @@ def parents_too_old(individuals, family):
     return familes_parents_too_old
 
 def list_orphans(individuals,family):
-    print("Orphans: ")
     orphans = []
     for i in individuals:
         iFam = None
@@ -197,7 +196,7 @@ def list_orphans(individuals,family):
                 elif iFam.husbandId == p.IndId:
                     father = p
             if mother.alive == False and (father.alive == False and (date.today() - timedelta(days=18*365)) < i.birthday):
-                print(i.IndId)
+                print("US 33: ORPHANS " + str(i.name))
                 orphans += [i]
     return orphans
 
